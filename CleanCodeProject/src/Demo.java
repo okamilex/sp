@@ -97,7 +97,33 @@ public class Demo {
                 }
                 case "save":
                 {
-
+                    if (!messageList.isEmpty()){
+                        System.out.println("Input: filename: ('chat', 'history')");
+                        String filename = reader.readLine();
+                        filename = filename + ".json";
+                        File jsonFile  = new File(filename);
+                        FileWriter fileWriter = new FileWriter(jsonFile);
+                        JsonWriter jsonWriter = Json.createWriter(fileWriter);
+                        JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
+                        for (int i = 0;i<messageList.size();i++)
+                        {
+                            arrayBuilder.add(
+                                    Json.createObjectBuilder()
+                                            .add("id", messageList.get(i).getId())
+                                            .add("author", messageList.get(i).getAuthor())
+                                            .add("timestamp", (long) messageList.get(i).getTimestamp().getTime())
+                                            .add("message", messageList.get(i).getMessage())
+                                            .build());
+                        }
+                        JsonArray jsonArray = arrayBuilder.build();
+                        jsonWriter.writeArray(jsonArray);
+                        jsonWriter.close();
+                        System.out.println("History was saved.");
+                        break;
+                    }
+                    else
+                        System.out.println("There isn't any message.");
+                    break;
                 }
                 case "search":
                 {
