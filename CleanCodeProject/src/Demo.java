@@ -20,15 +20,21 @@ import java.text.SimpleDateFormat;
 
 public class Demo {
 
+    static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    static ArrayList<Message> messageList = new ArrayList<Message>();
+    static String option = "";
+    static String name = "";
+    static String filename = "";
+    static int maxID = 0;
+    static boolean wantToExit = false;
+    static boolean fromDelete = false;
+
+
 
 public static void main(String[] args) throws IOException {
 
 
-    ArrayList<Message> messageList = new ArrayList<Message>();
-    String option = "";
-    String name = "";
-    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    boolean wantToExit = false;
+
     System.out.println("Input: your name");
     name = reader.readLine();
     System.out.println("Input: 'help' for help");
@@ -38,10 +44,8 @@ public static void main(String[] args) throws IOException {
             case "add": {
                 System.out.println("Input: message:");
                 String messageText = reader.readLine();
-                int id = 0;
-                if (!messageList.isEmpty()) {
-                    id = messageList.get(messageList.size() - 1).getId() + 1;
-                }
+                maxID++;
+                int id = maxID;
                 Date date = new Date();
                 Message message = new Message(id, name, date, messageText);
                 messageList.add(message);
@@ -68,6 +72,11 @@ public static void main(String[] args) throws IOException {
                             break;
                         }
                     } else {
+                        if(filename != "")
+                        {
+                            fromDelete = true;
+                            option = "save";
+                        }
                         break;
                     }
                 }
@@ -89,10 +98,11 @@ public static void main(String[] args) throws IOException {
                 System.out.println("Input: 'show'        for message history");
                 System.out.println("Input: 'showTime'    for message history of a time period");
                 System.out.println("Input: 'showTumbler' to turn on/turn off auto-history");
+                break;
             }
             case "open": {
                 System.out.println("Input: filename: ('chat', 'history')");
-                String filename = reader.readLine();
+                filename = reader.readLine();
                 if (filename == "") {
                     filename = "chatHistory";
                 }
@@ -108,15 +118,20 @@ public static void main(String[] args) throws IOException {
                     } else {
                         JsonArray arrMes = jsonArray.getJsonArray(0);
                         jsonReader.close();
-
                         messageList.clear();
+                        maxID = 0;
                         for (int i = 0; i < arrMes.size(); i++) {
                             JsonObject newObj = arrMes.getJsonObject(i);
+                            int id = newObj.getInt("id");
                             Message message = new Message(
-                                    newObj.getInt("id"),
+                                    id,
                                     newObj.getString("author"),
                                     new Date(newObj.getJsonNumber("timestamp").longValue()),
                                     newObj.getString("message"));
+                            if(id > maxID)
+                            {
+                                maxID = id;
+                            }
                             messageList.add(message);
                         }
                         for (Message it : messageList) {
@@ -140,12 +155,15 @@ public static void main(String[] args) throws IOException {
             }
             case "save": {
                 if (!messageList.isEmpty()) {
-                    System.out.println("Input: filename: ('chat', 'history')");
-                    String filename = reader.readLine();
-                    if (filename == "") {
-                        filename = "chatHistory";
-                    }
+                    if (!fromDelete) {
+                        System.out.println("Input: filename: ('chat', 'history')");
+                        filename = reader.readLine();
+                        if (filename == "") {
+                            filename = "chatHistory";
+                        }
                     filename = filename + ".json";
+                    }
+                    fromDelete = false;
                     File jsonFile = new File(filename);
                     FileWriter fileWriter = new FileWriter(jsonFile);
                     JsonWriter jsonWriter = Json.createWriter(fileWriter);
@@ -155,7 +173,7 @@ public static void main(String[] args) throws IOException {
                                 Json.createObjectBuilder()
                                         .add("id", messageList.get(i).getId())
                                         .add("author", messageList.get(i).getAuthor())
-                                        .add("timestamp", (long) messageList.get(i).getTimestamp().getTime())
+                                        .add("timestamp", messageList.get(i).getTimestamp().getTime())
                                         .add("message", messageList.get(i).getMessage())
                                         .build());
                     }
@@ -216,15 +234,41 @@ public static void main(String[] args) throws IOException {
                                 thereIsMessage = true;
                                 System.out.println(it.toString());
                             }
+
                         }
                         if (thereIsMessage == false) {
                             System.out.println("There isn't any message with this regular expression");
                         }
                         break;
                     }
+                    case "all":
                     default: {
+                        boolean thereIsMessage = false;
+                        System.out.println("search for:");
+                        String forSearch = reader.readLine();
+                        for (Message it : messageList) {
+                            if (it.getAuthor().equals(forSearch)) {
+                                System.out.println(it.toString());
+                                thereIsMessage = true;
+                                continue;
+                            }
+                            if (it.getMessage().contains(forSearch)) {
+                                System.out.println(it.toString());
+                                thereIsMessage = true;
+                                continue;
+                            }
+                            Pattern p = Pattern.compile(forSearch);
+                            Matcher m = p.matcher(it.getMessage());
+                            if (m.find()) {
+                                thereIsMessage = true;
+                                System.out.println(it.toString());
+                            }
+                        }
+                        if (thereIsMessage == false) {
+                            System.out.println("There isn't any message from this author");
+                        }
 
-                        System.out.println("Wrong input!");
+
                         break;
                     }
                 }
