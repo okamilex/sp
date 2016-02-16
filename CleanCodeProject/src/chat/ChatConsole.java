@@ -22,6 +22,7 @@ public class ChatConsole {
     String name = "";
     String filename = "";
     int maxID = 0;
+    int addCount = 0;
     boolean wantToExit = false;
     boolean fromDelete = false;
 
@@ -106,6 +107,7 @@ public class ChatConsole {
     }
 
     public void save() throws IOException {
+        int count = 0;
         if (!messageList.isEmpty()) {
 
             System.out.println("Input: filename: ('chat', 'history')");
@@ -135,22 +137,24 @@ public class ChatConsole {
                                 .add("timestamp", aMessageList.getTimestamp().getTime())
                                 .add("message", aMessageList.getMessage())
                                 .build());
+                count++;
             }
             JsonArray jsonArray = arrayBuilder.build();
             jsonWriter.writeArray(jsonArray);
             jsonWriter.close();
             System.out.println("History was saved.");
-            logWriter.write((new Date()).toString() + " | " + "Save: " + filename + " |Successfully " + "" + "\n");
+            logWriter.write((new Date()).toString() + " | " + "Save: " + filename + " |Successfully: " + count + " saved" + "\n");
         } else {
             System.out.println("There isn't any message.");
-            logWriter.write((new Date()).toString() + " | " + "Save: " + filename + " |Successfully " + "" + "\n");
+            logWriter.write((new Date()).toString() + " | " + "Save: " + filename + " |There isn't any message. " + "" + "\n");
         }
     }
     public void open() throws IOException {
+        int count = 0;
         System.out.println("Input: filename: ('chat', 'history')");
         String filenameHere = reader.readLine();
         if (!filenameHere.equals("") || filename.equals("")) {
-            filename = "history" + filenameHere + ".json";
+            filename = "history/" + filenameHere + ".json";
         }
         try {
             String jsonAllLines = Files.readAllLines(Paths.get(filename)).toString();
@@ -176,10 +180,11 @@ public class ChatConsole {
                     if (id > maxID) {
                         maxID = id;
                     }
+                    count++;
                     System.out.println(message.toString());
                     messageList.add(message);
                 }
-                logWriter.write((new Date()).toString() + " | " + "Open: " + filename + " |Successfully " + "" + "\n");
+                logWriter.write((new Date()).toString() + " | " + "Open: " + filename + " |Successfully: " + count + " opened" + "\n");
             }
         } catch (JsonException e) {
             System.out.println(e.getMessage());
@@ -189,8 +194,7 @@ public class ChatConsole {
             logWriter.write((new Date()).toString() + " | " +"Open: " + e.getMessage() + " |There isn't file with filename " + "" + "\n");
         }
     }
-
-
+    
     public void delete() throws IOException {
         while (true) {
             System.out.print("Input: message id:");
@@ -226,6 +230,7 @@ public class ChatConsole {
         Date time = new Date();
         Message message = new Message(id, name, time, messageText);
         messageList.add(message);
+        addCount++;
         System.out.println("Message was successfully added.");
         logWriter.write((new Date()).toString() + " | " + "Add message: " + messageText + " |Successfully " + "" + "\n");
     }
@@ -413,6 +418,7 @@ public class ChatConsole {
     public void exit() {
         wantToExit = true;
         Date exitTime = new Date();
-        logWriter.write("___________" + exitTime.toString() + " Exit   " + "___________");
+        logWriter.write("___________" + exitTime.toString() + " Exit   " + "___________\n");
+        logWriter.write(addCount + "message was added");
     }
 }

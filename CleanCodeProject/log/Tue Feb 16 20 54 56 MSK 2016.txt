@@ -1,0 +1,6 @@
+___________Tue Feb 16 20:54:56 MSK 2016 Started___________
+Tue Feb 16 20:55:00 MSK 2016 | Set name: alex |Successfully 
+Tue Feb 16 20:55:03 MSK 2016 | Add message: Tue Feb 16 20 53 10 MSK 2016 |Successfully 
+Tue Feb 16 20:55:11 MSK 2016 | Show:  |Successfully 
+Tue Feb 16 20:55:21 MSK 2016 | Open: history/Tue Feb 16 20 53 10 MSK 2016.json |Successfully 
+___________Tue Feb 16 20:55:29 MSK 2016 Exit   ___________
