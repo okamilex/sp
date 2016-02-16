@@ -1,0 +1,24 @@
+___________Tue Feb 16 19:01:33 MSK 2016 Started___________
+Tue Feb 16 19:01:36 MSK 2016 | Set name: alex |Successfully 
+Tue Feb 16 19:01:39 MSK 2016 | Add message: gsgd |Successfully 
+Tue Feb 16 19:01:40 MSK 2016 | Add message: ahg |Successfully 
+Tue Feb 16 19:01:41 MSK 2016 | Add message: ahf |Successfully 
+Delete message: ahg |Successfully 
+Tue Feb 16 19:01:53 MSK 2016 | Delete message: 5 |Wasn't found 
+and we will retry 
+Tue Feb 16 19:02:24 MSK 2016 | Delete message: 5 |Wasn't found 
+and exit 
+Tue Feb 16 19:02:37 MSK 2016 | Add message: regina |Successfully 
+Tue Feb 16 19:03:05 MSK 2016 | Add message: setname |Successfully 
+Tue Feb 16 19:03:41 MSK 2016 | Set name: regina |Successfully 
+Tue Feb 16 19:03:41 MSK 2016 | Show:  |Successfully 
+Tue Feb 16 19:03:52 MSK 2016 | Add message: gina |Successfully 
+Tue Feb 16 19:03:59 MSK 2016 | Add message: 20 |Successfully 
+Tue Feb 16 19:04:16 MSK 2016 | Search by all: regina |Successfully 
+Tue Feb 16 19:04:40 MSK 2016 | Search By Author: regina |Successfully 
+Search By Key Word: gina |Successfully 
+Tue Feb 16 19:05:26 MSK 2016 | Search By Key Word: gina |Successfully 
+Tue Feb 16 19:05:42 MSK 2016 | Search By Regular Expression: \d |Successfully 
+Tue Feb 16 19:06:51 MSK 2016 | Search in time: Fri Jan 15 00:00:00 MSK 2016-Tue Feb 16 19:02:41 MSK 2016 |Successfully 
+Tue Feb 16 19:06:58 MSK 2016 | Show:  |Successfully 
+___________Tue Feb 16 19:07:10 MSK 2016 Exit   ___________

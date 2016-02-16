@@ -1,7 +1,5 @@
 package chat;
 
-
-
 import javax.json.*;
 import java.io.*;
 import java.lang.*;
@@ -23,7 +21,6 @@ public class ChatConsole {
     String option = "";
     String name = "";
     String filename = "";
-
     int maxID = 0;
     boolean wantToExit = false;
     boolean fromDelete = false;
@@ -40,20 +37,13 @@ public class ChatConsole {
         }
         logFile = "log/" + logFile + ".txt";//".logfile";
         logWriter = new PrintWriter(new BufferedWriter(new FileWriter(logFile)));
-        logWriter.write("___________________________________________"+""+"\n");
-        logWriter.write(startTime.toString()+" Started"+""+"\n");
-        logWriter.write("___________________________________________"+""+"\n");
-        String s = "gsd \n";
-        logWriter.write(s);
+        logWriter.write("___________" + startTime.toString() + " Started" + "___________" + "\n");
+
         setNameHere();
         System.out.println("Input: 'help' for help");
         while (!wantToExit) {
             option = reader.readLine();
             switch (option) {
-                case "add": {
-                    add();
-                    break;
-                }
 
                 case "exit": {
                     exit();
@@ -69,6 +59,7 @@ public class ChatConsole {
                 }
                 case "delete": {
                     delete();
+                    break;
 
                 }
                 case "save": {
@@ -95,7 +86,16 @@ public class ChatConsole {
 
                 }
                 default: {
-                    add(option);
+                    if (option.length() > 140) {
+                        System.out.println("Warning!!! Message is too long. We recommend to use lathe than 140 characters.");
+                        logWriter.write((new Date()).toString() + " | " + "Warning!!! Message " + option + " is too long." + "" + "\n");
+
+                        logWriter.flush();
+                        return;
+                    } else {
+                        add(option);
+                    }
+
                     break;
                 }
             }
@@ -105,25 +105,23 @@ public class ChatConsole {
 
     }
 
-    public void exit() {
-        wantToExit = true;
-        logWriter.write("Exit: ");
-    }
-
     public void save() throws IOException {
         if (!messageList.isEmpty()) {
-            if (!fromDelete) {
-                System.out.println("Input: filename: ('chat', 'history')");
-                filename = reader.readLine();
-                if (filename.equals("")) {
-                    filename = "chatHistory";
-                }
-                filename = filename + ".json";
-            }
+
+            System.out.println("Input: filename: ('chat', 'history')");
+            filename = reader.readLine();
             if (filename.equals("")) {
-                filename = "chatHistory";
-                filename = filename + ".json";
+                String logXFileP = (new Date()).toString();
+                StringTokenizer k = new StringTokenizer(logXFileP, ":", false);
+                while (k.hasMoreTokens()) {
+                    filename = filename + k.nextToken();
+                    if (k.hasMoreTokens()) {
+                        filename = filename + " ";
+                    }
+                }
             }
+            filename = "history/" + filename + ".json";
+
             fromDelete = false;
             File jsonFile = new File(filename);
             FileWriter fileWriter = new FileWriter(jsonFile);
@@ -142,47 +140,18 @@ public class ChatConsole {
             jsonWriter.writeArray(jsonArray);
             jsonWriter.close();
             System.out.println("History was saved.");
-        } else
+            logWriter.write((new Date()).toString() + " | " + "Save: " + filename + " |Successfully " + "" + "\n");
+        } else {
             System.out.println("There isn't any message.");
-    }
-
-    public void delete() throws IOException {
-        while (true) {
-            System.out.print("Input: message id:");
-
-            int id = Integer.valueOf(reader.readLine());
-            boolean isDeleted = false;
-            for (int i = 0; i < messageList.size(); i++) {
-                if (messageList.get(i).getId() == id) {
-                    messageList.remove(i);
-                    System.out.println("Message is successfully deleted");
-                    isDeleted = true;
-                }
-            }
-            if (!isDeleted) {
-                System.out.println("This id isn't match id of any existed message. Do you want to try again? Y/N");
-                String answer = reader.readLine();
-                if (answer.equals("n")) {
-                    break;
-                }
-            } else {
-                if (!filename.equals("")) {
-                    fromDelete = true;
-                    option = "save";
-                }
-                break;
-            }
+            logWriter.write((new Date()).toString() + " | " + "Save: " + filename + " |Successfully " + "" + "\n");
         }
     }
-
     public void open() throws IOException {
         System.out.println("Input: filename: ('chat', 'history')");
-        filename = reader.readLine();
-        if (filename.equals("")) {
-            filename = "chatHistory";
+        String filenameHere = reader.readLine();
+        if (!filenameHere.equals("") || filename.equals("")) {
+            filename = "history" + filenameHere + ".json";
         }
-        filename = filename + ".json";
-
         try {
             String jsonAllLines = Files.readAllLines(Paths.get(filename)).toString();
             JsonReader jsonReader = Json.createReader(new StringReader(jsonAllLines));
@@ -190,6 +159,7 @@ public class ChatConsole {
 
             if (jsonArray.size() == 0) {
                 System.out.println("File is empty.");
+                logWriter.write((new Date()).toString() + " | " + "Open: " + filename + " |Empty file. " + "" + "\n");
             } else {
                 JsonArray arrMes = jsonArray.getJsonArray(0);
                 jsonReader.close();
@@ -209,14 +179,47 @@ public class ChatConsole {
                     System.out.println(message.toString());
                     messageList.add(message);
                 }
+                logWriter.write((new Date()).toString() + " | " + "Open: " + filename + " |Successfully " + "" + "\n");
             }
         } catch (JsonException e) {
             System.out.println(e.getMessage());
+            logWriter.write((new Date()).toString() + " | " +"Open: " + e.getMessage() + " |Exception " + "" + "\n");
         } catch (NoSuchFileException e) {
             System.out.println("There isn't file with filename: " + e.getMessage());
+            logWriter.write((new Date()).toString() + " | " +"Open: " + e.getMessage() + " |There isn't file with filename " + "" + "\n");
         }
     }
 
+
+    public void delete() throws IOException {
+        while (true) {
+            System.out.print("Input: message id:");
+
+            int id = Integer.valueOf(reader.readLine());
+            boolean isDeleted = false;
+            for (int i = 0; i < messageList.size(); i++) {
+                if (messageList.get(i).getId() == id) {
+                    logWriter.write("Delete message: " + messageList.get(i).getMessage());
+                    messageList.remove(i);
+                    System.out.println((new Date()).toString() + " | " + "Message is successfully deleted");
+                    logWriter.write(" |Successfully " + "" + "\n");
+                    isDeleted = true;
+                }
+            }
+            if (!isDeleted) {
+                System.out.println("This id isn't match id of any existed message. Do you want to try again? Y/N");
+                logWriter.write((new Date()).toString() + " | " + "Delete message: " + id + " |Wasn't found " + "" + "\n");
+                String answer = reader.readLine();
+                if (answer.equals("n")) {
+                    logWriter.write("and exit \n");
+                    break;
+                }
+                logWriter.write("and we will retry \n");
+            } else {
+                break;
+            }
+        }
+    }
     public void add(String messageText) throws IOException {
         maxID++;
         int id = maxID;
@@ -224,17 +227,7 @@ public class ChatConsole {
         Message message = new Message(id, name, time, messageText);
         messageList.add(message);
         System.out.println("Message was successfully added.");
-    }
-
-    public void add() throws IOException {
-        System.out.println("Input: message:");
-        String messageText = reader.readLine();
-        maxID++;
-        int id = maxID;
-        Date time = new Date();
-        Message message = new Message(id, name, time, messageText);
-        messageList.add(message);
-        System.out.println("Message was successfully added.");
+        logWriter.write((new Date()).toString() + " | " + "Add message: " + messageText + " |Successfully " + "" + "\n");
     }
 
     public void search() throws IOException {
@@ -265,50 +258,6 @@ public class ChatConsole {
             }
         }
     }
-
-    public void setNameHere() throws IOException {
-        System.out.println("Input: name");
-        name = reader.readLine();
-        logWriter.write("Set name: "+name+" successfully "+""+"\n");
-    }
-
-    public void show() {
-        if (messageList.size() > 0) {
-            for (Message it : messageList) {
-                System.out.println(it.toString());
-            }
-        } else {
-            System.out.println("There isn't any message");
-        }
-    }
-
-    public void showTme() throws IOException {
-        Date timeFrom = null;
-        Date timeTo = null;
-        System.out.println("Input: time-from: dd/mm/yyyy hh:mm:ss");
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
-        try {
-            timeFrom = format.parse(reader.readLine());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        System.out.println("Input: time-to: dd/mm/yyyy hh:mm:ss");
-        try {
-            timeTo = format.parse(reader.readLine());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        boolean thereIsMessage = false;
-        for (Message iterator : messageList) {
-            if (timeFrom != null && timeTo != null && iterator.getTimestamp().after(timeFrom) && iterator.getTimestamp().before(timeTo)) {
-                System.out.println(iterator.toString());
-                thereIsMessage = true;
-            }
-        }
-        if (!thereIsMessage)
-            System.out.println("There isn't any message in this period of time");
-    }
-
     public void searchAll() throws IOException {
         boolean thereIsMessage = false;
         System.out.println("search for:");
@@ -333,13 +282,16 @@ public class ChatConsole {
         }
         if (!thereIsMessage) {
             System.out.println("There isn't any message from this author");
+            logWriter.write((new Date()).toString() + " | " + "Search by all: " + forSearch + " |Nothing was found " + "" + "\n");
+        } else {
+            logWriter.write((new Date()).toString() + " | " + "Search by all: " + forSearch + " |Successfully " + "" + "\n");
         }
     }
-
     public void searchByRegularExpression() throws IOException {
         boolean thereIsMessage = false;
         System.out.println("Input: regular expression");
         String expression = reader.readLine();
+
         for (Message it : messageList) {
             Pattern p = Pattern.compile(expression);
             Matcher m = p.matcher(it.getMessage());
@@ -351,13 +303,16 @@ public class ChatConsole {
         }
         if (!thereIsMessage) {
             System.out.println("There isn't any message with this regular expression");
+            logWriter.write((new Date()).toString() + " | " + "Search By Regular Expression: " + expression + " |There isn't any message with this regular expression " + "" + "\n");
+        } else {
+            logWriter.write((new Date()).toString() + " | " + "Search By Regular Expression: " + expression + " |Successfully " + "" + "\n");
         }
     }
-
     public void searchByKeyWord() throws IOException {
         boolean thereIsMessage = false;
         System.out.println("Input: key word");
         String keyWord = reader.readLine();
+        logWriter.write("Search By Key Word: " + keyWord + " |Successfully " + "" + "\n");
         for (Message it : messageList) {
             if (it.getMessage().contains(keyWord)) {
                 System.out.println(it.toString());
@@ -366,13 +321,17 @@ public class ChatConsole {
         }
         if (!thereIsMessage) {
             System.out.println("There isn't any message with this word");
+            logWriter.write((new Date()).toString() + " | " + "Search By Key Word: " + keyWord + " |There isn't any message with this word " + "" + "\n");
+        } else {
+            logWriter.write((new Date()).toString() + " | " + "Search By Key Word: " + keyWord + " |Successfully " + "" + "\n");
         }
-    }
 
+    }
     public void searchByAuthor() throws IOException {
         boolean thereIsMessage = false;
         System.out.println("Input: author name");
         String nameForSearch = reader.readLine();
+
         for (Message it : messageList) {
             if (it.getAuthor().equals(nameForSearch)) {
                 System.out.println(it.toString());
@@ -381,10 +340,58 @@ public class ChatConsole {
         }
         if (!thereIsMessage) {
             System.out.println("There isn't any message from this author");
+            logWriter.write((new Date()).toString() + " | " + "Search By Author: " + nameForSearch + " |There isn't any message from this author " + "" + "\n");
+        } else {
+            logWriter.write((new Date()).toString() + " | " + "Search By Author: " + nameForSearch + " |Successfully " + "" + "\n");
+        }
+    }
+
+    public void show() {
+        if (messageList.size() > 0) {
+            for (Message it : messageList) {
+                System.out.println(it.toString());
+            }
+            logWriter.write((new Date()).toString() + " | " + "Show: " + " |Successfully " + "" + "\n");
+        } else {
+            System.out.println("There isn't any message");
+            logWriter.write((new Date()).toString() + " | " + "Show: " + " |There isn't any message " + "" + "\n");
+        }
+    }
+    public void showTme() throws IOException {
+        Date timeFrom = null;
+        Date timeTo = null;
+        System.out.println("Input: time-from: dd/mm/yyyy hh:mm:ss");
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+        try {
+            timeFrom = format.parse(reader.readLine());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Input: time-to: dd/mm/yyyy hh:mm:ss");
+        try {
+            timeTo = format.parse(reader.readLine());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        boolean thereIsMessage = false;
+        for (Message iterator : messageList) {
+            if (timeFrom != null && timeTo != null && iterator.getTimestamp().after(timeFrom) && iterator.getTimestamp().before(timeTo)) {
+                System.out.println(iterator.toString());
+                thereIsMessage = true;
+            }
+        }
+        if (!thereIsMessage) {
+            System.out.println("There isn't any message in this period of time");
+            assert timeFrom != null;
+            assert timeTo != null;
+            logWriter.write((new Date()).toString() + " | " + "Search in time: " + timeFrom.toString() + "-" + timeTo.toString() + " |There isn't any message in this period of time " + "" + "\n");
+        } else {
+            logWriter.write((new Date()).toString() + " | " + "Search in time: " + timeFrom.toString() + "-" + timeTo.toString() + " |Successfully " + "" + "\n");
         }
     }
 
     public void help() {
+        logWriter.write((new Date()).toString() + " | " + "Help: " + " |Successfully " + "" + "\n");
         System.out.println("Input: 'add'         to add a message");
         System.out.println("Input: 'delete'      to delete a message");
         System.out.println("Input: 'exit'        to exit");
@@ -396,5 +403,16 @@ public class ChatConsole {
         System.out.println("Input: 'show'        for message history");
         System.out.println("Input: 'showTime'    for message history of a time period");
         System.out.println("Input: 'showTumbler' to turn on/turn off auto-history");
+        System.out.println("Input: <message>     to add a message");
+    }
+    public void setNameHere() throws IOException {
+        System.out.println("Input: name");
+        name = reader.readLine();
+        logWriter.write((new Date()).toString() + " | " + "Set name: " + name + " |Successfully " + "" + "\n");
+    }
+    public void exit() {
+        wantToExit = true;
+        Date exitTime = new Date();
+        logWriter.write("___________" + exitTime.toString() + " Exit   " + "___________");
     }
 }
