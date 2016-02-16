@@ -52,36 +52,7 @@ public static void main(String[] args) throws IOException {
                 System.out.println("Message was successfully added.");
                 break;
             }
-            case "delete": {
-                while (true) {
-                    System.out.print("Input: message id:");
 
-                    int id = Integer.valueOf(reader.readLine());
-                    boolean isDeleted = false;
-                    for (int i = 0; i < messageList.size(); i++) {
-                        if (messageList.get(i).getId() == id) {
-                            messageList.remove(i);
-                            System.out.println("Message is successfully deleted");
-                            isDeleted = true;
-                        }
-                    }
-                    if (isDeleted == false) {
-                        System.out.println("This id isn't match id of any existed message. Do you want to try again? Y/N");
-                        String answer = reader.readLine();
-                        if (answer.equals("n")) {
-                            break;
-                        }
-                    } else {
-                        if(filename != "")
-                        {
-                            fromDelete = true;
-                            option = "save";
-                        }
-                        break;
-                    }
-                }
-                break;
-            }
             case "exit": {
                 wantToExit = true;
                 break;
@@ -148,9 +119,35 @@ public static void main(String[] args) throws IOException {
                     System.out.println("There isn't file with filename: "+e.getMessage());
                 }
                 break;
+            }
+            case "delete": {
+                while (true) {
+                    System.out.print("Input: message id:");
 
-
-
+                    int id = Integer.valueOf(reader.readLine());
+                    boolean isDeleted = false;
+                    for (int i = 0; i < messageList.size(); i++) {
+                        if (messageList.get(i).getId() == id) {
+                            messageList.remove(i);
+                            System.out.println("Message is successfully deleted");
+                            isDeleted = true;
+                        }
+                    }
+                    if (isDeleted == false) {
+                        System.out.println("This id isn't match id of any existed message. Do you want to try again? Y/N");
+                        String answer = reader.readLine();
+                        if (answer.equals("n")) {
+                            break;
+                        }
+                    } else {
+                        if(filename != "")
+                        {
+                            fromDelete = true;
+                            option = "save";
+                        }
+                        break;
+                    }
+                }
 
             }
             case "save": {
@@ -162,6 +159,10 @@ public static void main(String[] args) throws IOException {
                             filename = "chatHistory";
                         }
                     filename = filename + ".json";
+                    }
+                    if (filename == "") {
+                        filename = "chatHistory";
+                        filename = filename + ".json";
                     }
                     fromDelete = false;
                     File jsonFile = new File(filename);
@@ -187,7 +188,7 @@ public static void main(String[] args) throws IOException {
                 break;
             }
             case "search": {
-                System.out.println("Input: Search by(author/key word/regular expression):");
+                System.out.println("Input: Search by(author/key word/regular expression/all):");
                 String searchOption = reader.readLine();
                 switch (searchOption) {
                     case "author":
