@@ -1,6 +1,7 @@
 /**
  * Created by alex_ on 14.02.2016.
  */
+package chat;
 import java.util.Date;
 
 public class Message {
