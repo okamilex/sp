@@ -14,14 +14,13 @@ import java.text.SimpleDateFormat;
 
 public class ChatConsole {
     Date startTime = new Date();
-    String logFile = "";
     PrintWriter logWriter;
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     List<Message> messageList = new ArrayList<>();
+    String logFile = "";
     String option = "";
     String name = "";
     String filename = "";
-    int maxID = 0;
     int addCount = 0;
     boolean wantToExit = false;
     boolean fromDelete = false;
@@ -36,7 +35,7 @@ public class ChatConsole {
                 logFile = logFile + " ";
             }
         }
-        logFile = "log/" + logFile + ".txt";//".logfile";
+        logFile = "log/" + logFile + ".logfile";//".logfile";
         logWriter = new PrintWriter(new BufferedWriter(new FileWriter(logFile)));
         logWriter.write("___________" + startTime.toString() + " Started" + "___________" + "\n");
 
@@ -168,7 +167,6 @@ public class ChatConsole {
                 JsonArray arrMes = jsonArray.getJsonArray(0);
                 jsonReader.close();
                 messageList.clear();
-                maxID = 0;
                 for (int i = 0; i < arrMes.size(); i++) {
                     JsonObject newObj = arrMes.getJsonObject(i);
                     int id = newObj.getInt("id");
@@ -177,9 +175,6 @@ public class ChatConsole {
                             newObj.getString("author"),
                             new Date(newObj.getJsonNumber("timestamp").longValue()),
                             newObj.getString("message"));
-                    if (id > maxID) {
-                        maxID = id;
-                    }
                     count++;
                     System.out.println(message.toString());
                     messageList.add(message);
@@ -194,7 +189,7 @@ public class ChatConsole {
             logWriter.write((new Date()).toString() + " | " +"Open: " + e.getMessage() + " |There isn't file with filename " + "" + "\n");
         }
     }
-    
+
     public void delete() throws IOException {
         while (true) {
             System.out.print("Input: message id:");
@@ -225,8 +220,10 @@ public class ChatConsole {
         }
     }
     public void add(String messageText) throws IOException {
-        maxID++;
-        int id = maxID;
+        int id = 0;
+        if (!messageList.isEmpty()) {
+            id = messageList.get(messageList.size() - 1).getId() + 1;
+        }
         Date time = new Date();
         Message message = new Message(id, name, time, messageText);
         messageList.add(message);
