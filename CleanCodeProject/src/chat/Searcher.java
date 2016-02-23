@@ -2,12 +2,12 @@ package chat;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.List;
+import java.util.regex.PatternSyntaxException;
 
 public class Searcher {
     private List<Message> messageList;
@@ -18,13 +18,7 @@ public class Searcher {
         this.messageList = messageList;
         this.logWriter = logWriter;
         this.reader = reader;
-        reader = new BufferedReader(new InputStreamReader(System.in));
         search();
-        try {
-            reader.close();
-        } catch (IOException e) {
-            System.out.println("Reader close error");
-        }
     }
 
     public void search() {
@@ -67,6 +61,7 @@ public class Searcher {
         System.out.println("search for:");
         String forSearch;
         forSearch = "";
+        boolean incorrectExpression = false;
         try {
             forSearch = reader.readLine();
         } catch (IOException e) {
@@ -83,12 +78,20 @@ public class Searcher {
                 thereIsMessage = true;
                 continue;
             }
-            Pattern p = Pattern.compile(forSearch);
-            Matcher m = p.matcher(it.getMessage());
-            if (m.find()) {
-                thereIsMessage = true;
-                System.out.println(it.toString());
+            try {
+                Pattern p = Pattern.compile(forSearch);
+                Matcher m = p.matcher(it.getMessage());
+                if (m.find()) {
+                    thereIsMessage = true;
+                    System.out.println(it.toString());
+                }
+            } catch (PatternSyntaxException e) {
+                if (!incorrectExpression) {
+                    System.out.println("Incorrect expression: \n" + e.getMessage());
+                    incorrectExpression = true;
+                }
             }
+
         }
         if (!thereIsMessage) {
             System.out.println("There isn't any message from this author");
@@ -99,6 +102,7 @@ public class Searcher {
     }
     public void searchByRegularExpression() {
         boolean thereIsMessage = false;
+        boolean incorrectExpression = false;
         System.out.println("Input: regular expression");
 
         String expression;
@@ -110,15 +114,20 @@ public class Searcher {
         }
 
         for (Message it : messageList) {
-            Pattern p = Pattern.compile(expression);
-            Matcher m = p.matcher(it.getMessage());
-            if (m.find()) {
-                thereIsMessage = true;
-                System.out.println(it.toString());
+            try {
+                Pattern p = Pattern.compile(expression);
+                Matcher m = p.matcher(it.getMessage());
+                if (m.find()) {
+                    thereIsMessage = true;
+                    System.out.println(it.toString());
+                }
+            } catch (PatternSyntaxException e) {
+                System.out.println("Incorrect expression: \n" + e.getMessage());
+                incorrectExpression = true;
             }
 
         }
-        if (!thereIsMessage) {
+        if ((!thereIsMessage) && (!incorrectExpression)) {
             System.out.println("There isn't any message with this regular expression");
             logWriter.write((new Date()).toString() + " | " + "Search By Regular Expression: " + expression + " |There isn't any message with this regular expression " + "" + "\n");
         } else {
