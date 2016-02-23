@@ -38,7 +38,7 @@ public class ChatConsole {
                 logFile = logFile + " ";
             }
         }
-        logFile = "log/" + logFile + ".logfile";//".logfile";
+        logFile = "log/" + logFile + ".txt";//".logfile";
         try {
             logWriter = new PrintWriter(new BufferedWriter(new FileWriter(logFile)));
         } catch (IOException e) {
