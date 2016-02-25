@@ -1,109 +1,18 @@
 html, body {
     height: 100%;
 }
-
 body {
 	font-family: 'Open Sans';
-    min-height: 100%;
     color: #949494;
 	font-size: 24px;
+    margin: auto;
 }
-
-
-
-.section-inner {
-	max-width: 1200px;
-    margin: 0 auto;
-}
-
-.header {
-	background-color: #f0f0f0;
-}
-
-.section-headline {
-	font-family: 'Open Sans Bold';
-	color: #333333;
-	font-size: 38.5px;
-	line-height: 38.5px;
-	padding: 12px 20px;
-    height: 20%;
-}
-
-footer {
-    border: none;
-    height: 5%;
-    font-family: Calibri;
-    font-size: 30px;
-    color: white;
-    background-color: #337ab7;
-    text-align: right;
-    padding-right: 10px;
-}
-
-button.usernameButton {
-    border-style: solid;
-    border-color: sandybrown;
-    border-radius: 20px;
-    border-width: 4px;
-    height: 41px;
-    font-size: 20px;
-    vertical-align: middle;
-    display: inline-block;
-    background-color: tan;
-}
-div.username {
-
-    padding-right: 0.5em;
-    display: inline-block;
-    vertical-align: middle;
-    font-size: 20px;
-}
-input.editUsername{
-    border: solid;
-    border-color: snow;
-    border-radius: 5px;
-    border-width: 2px;
-    vertical-align: middle;
-    padding-left: 5px;
-    height: 20px;
-    width: 215px;
-    font-size: 15px;
-    
-}
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
-
-li {
-    float: left;
-}
-
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-a:hover:not(.active) {
-    background-color: #111;
-}
-
-.active {
-background-color:#4CAF50;
-}
-
-
 section.centralPart {    
-    width: 1000px;  
+    top: 25%;
+    margin-bottom:  25%;
+    width: 100%;  
     border-color: snow;
-    max-height: 50%;
-    
+    max-height: 50%;    
 }
 div.message {
     border-style: solid;
@@ -111,63 +20,53 @@ div.message {
     border-radius: 20px;
     border-width: 4px;
     height: 50px;
-    font-size: 41px;
+    font-size: 20px;
     vertical-align: middle;
     display: inline-block;
-    background-color: aqua;
-    
-    margin-right: auto;
-    margin-top: 10px;
-    height: 100px;
+    background-color: aqua;    
+    margin-right: auto;    
     padding: 20px; 
-    
-    
-    max-width: 200px;
-    
+    max-width: 80%;
 }
 div.yourMessage {
+    text-align: right;
     border-style: solid;
     border-color: forestgreen;
     border-radius: 20px;
     border-width: 4px;
-    height: 50px;
-    max-width: 200px;
-    font-size: 41px;
+    height: 25px;
+    max-width: 80%;
+    font-size: 20px;
     vertical-align: middle;    
     background-color: mediumspringgreen;    
     margin-left: auto; 
     padding: 20px;
-    
 }
-section.writePart {
-    display: block;
-    border: solid;
-    height: 25%;
-    background-color: skyblue;    
-}
-textarea.message {
-    width: 1200px;
-    padding-top: 2px;
-    margin-top: 1.5em;
-    height: 60px;
-    margin-left: 10em;
+div.messageChanged {
+    border-style: dotted;
+    border-color: midnightblue;
+    border-radius: 20px;
+    border-width: 4px;
+    height: 50px;
+    font-size: 20px;
+    vertical-align: middle;
     display: inline-block;
+    background-color: aqua;
+    margin-right: auto;
+    margin-top: 10px;
+    padding: 20px; 
+    max-width: 80%;
 }
-button.enterMessage {
-    margin-left: 10px;
-    vertical-align: 16px;
-    width: 100px;
-    height: 40px;
-    border-style: solid;
-    border-color: grey;
-    border-radius: 10px;
-    background-color: lavender;
+div.messageDeleted {
+    border-style: dotted;
+    border-color: midnightblue;
+    border-radius: 20px;
+    border-width: 4px;
+    height: 5px;
+    vertical-align: middle;
+    display: inline-block;
+    background-color: aqua;
+    margin-right: auto;
+    margin-top: 10px;
+    width: 200px;
 }
-img.connectionError {
-    max-height: 50px;
-    max-width: 50px;
-}
-
-
-
-

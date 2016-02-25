@@ -1,0 +1,108 @@
+p.changeName {
+    font-family: 'Open Sans Bold';
+    cursor: pointer;
+	color: snow;
+	font-size: 100%;
+	line-height: 100%;  
+    text-align: center;  
+}
+p.closeName {
+    font-family: 'Open Sans Bold';
+    cursor: pointer;
+    color: snow;
+    max-height: 20%;
+    font-size: 25%;
+    text-align: center;
+    
+}
+button.usernameButton {
+    border-style: solid;
+    border-color: sandybrown;
+    border-radius: 20px;
+    border-width: 1px;
+    max-height: 75%;
+    max-width: 90%;
+    vertical-align: middle;
+    display: inline-block;
+    background-color: tan;
+}
+div.username {
+    padding-right: 0.5em;
+    display: inline-block;
+    vertical-align: middle;
+    max-height: 75%;
+    max-width: 98%;
+}
+input.editUsername{
+    border: solid;
+    border-color: snow;
+    border-radius: 0.5%;
+    border-width: 1px;
+    vertical-align: middle;
+    padding-left: 5px;
+    max-height: 75%;
+    max-width: 90%;
+    
+}
+ul {
+    position: fixed;
+    width: 100%;
+    max-height: 25%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+li {
+    float: left;
+    align-content: center;
+    vertical-align: center;
+}
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+a:hover:not(.active) {
+    background-color: #111;
+}
+.active {
+background-color:#4CAF50;
+max-height: 30px;
+}
+img.connectionError {
+    max-height: 20px;
+    max-width: 20px;
+}
+.section-headline {
+	font-family: 'Open Sans Bold';
+	color: #333333;
+	font-size: 38.5px;
+	line-height: 38.5px;
+    height: 30px;
+}
+#parent_popup {
+  background: grey;
+  opacity: 85;
+  height: 22%;
+  position: fixed;
+  width: 22%;
+  z-index: 100;
+  top: 39%;
+  left: 39%;
+}
+#popup {
+  background-color: black;
+  height: 20%;
+  position: fixed;
+  
+  top: 40%;
+  left: 40%;
+  width: 20%;
+  color: snow;
+}
+
+

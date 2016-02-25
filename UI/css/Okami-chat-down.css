@@ -1,0 +1,47 @@
+section.writePart {
+    position: fixed; 
+    width: 100%;
+    top: 80%;
+    display: block;
+    border: solid;
+    height: 25%;
+    background-color: skyblue;       
+}
+textarea.message {
+    width: 75%;
+    left: 15%;
+    padding-top: 2px;
+    margin-top: 1.5em;
+    height: 60px;
+    margin-left: 10em;
+    display: inline-block;
+}
+button.enterMessage {
+    left: 500%;
+    top: 50%;
+    vertical-align: central;
+    max-width: 50%;
+    max-height: 50%;
+    border-style: solid;
+    border-color: grey;
+    border-radius: 20%;
+    vertical-align: center;
+    background-color: lavender;
+}
+img.message {
+    max-height: 100px;
+    max-width: 100px;
+}
+footer {
+    position: fixed; 
+    width: 100%;
+    top: 95%;
+    border: none;
+    height: 5%;
+    font-family: Calibri;
+    font-size: 30px;
+    color: white;
+    background-color: #337ab7;
+    text-align: right;
+    padding-right: 10px;
+}
