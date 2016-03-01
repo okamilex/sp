@@ -1,5 +1,4 @@
-package chat;
-
+package by.bsu.famcs.okamilex.okamichat;
 
 import javax.json.*;
 import java.io.*;
