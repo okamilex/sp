@@ -5,16 +5,17 @@
     <meta charset="UTF-8">
     <title>Okami-chat</title>
 
-    <link rel="stylesheet" href="css/Okami-chat-up.css" />
-    <link rel="stylesheet" href="css/Okami-chat.css" />
-    <link rel="stylesheet" href="css/Okami-chat-down.css" />
-    <link rel="stylesheet" href="../../resources/css/fonts.css" />
-    <link rel="stylesheet" href="css/responsive.css" />
-    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/Okami-chat-up.css"/>
+    <link rel="stylesheet" href="css/Okami-chat.css"/>
+    <link rel="stylesheet" href="css/Okami-chat-down.css"/>
+    <link rel="stylesheet" href="../../resources/css/fonts.css"/>
+    <link rel="stylesheet" href="css/responsive.css"/>
+    <link rel="stylesheet" href="css/normalize.css"/>
 
 </head>
 
 <body>
+
 
 
     <header class="header">
@@ -25,7 +26,8 @@
             </li>
             <li>
                 <a>
-                    <p class="changeName" onclick="document.getElementById('parent_popup').style.display='block';">Изменить имя</p>
+                    <p class="changeName" onclick="document.getElementById('parent_popup').style.display='block';">
+                        Изменить имя</p>
                 </a>
             </li>
             <li>
@@ -39,69 +41,97 @@
             </li>
         </ul>
     </header>
+
     <main>
+    <div class="centralPart">
+        <div class="space">-</div>
+        <div class="yourMessage">
+            <div>12:15 02.02.2016</div>
+            Test
+        </div>
+        <div class="SomeoneMessage"><p>
+            <div>User:1</div>
+            <div>12:15 02.02.2016</div>
+            <br> Hello</p></div>
+        <div class="yourMessageChanged">
+            <div>12:15 02.02.2016</div>
+            Test 2
+        </div>
+        <div class="messageDeleted">
+            <div>User:1</div>
+        </div>
 
-        <section class="centralPart">
-            <div class="yourMessage">Test</div>
-            <div class="message">User 1:
-                <br> Hello</div>
-            <div class="yourMessage">Test 2</div>
-            <div class="messageDeleted"></div>
-
-            <div class="yourMessage">Test</div>
-            <div class="messageChanged">User 1:
-                <br> Hello</div>
-            <div class="yourMessage">Test 2</div>
-            <div class="message">User 1:
-                <br> =)</div>
-            <div class="yourMessage">Test</div>
-            <div class="message">User 1:
-                <br> Hello</div>
-            <div class="yourMessage">Test 2</div>
-            <div class="message">User 1:
-                <br> =)</div>
-            <div class="yourMessage">Test</div>
-            <div class="message">User 1:
-                <br> Hello</div>
-            <div class="yourMessage">Test 2</div>
-            <div class="message">User 1:
-                <br> =)</div>
-        </section>
-        <div id="parent_popup">
-            <div id="popup">
-                <center>
-                    <p style="cursor: pointer;" onclick="document.getElementById('parent_popup').style.display='none';">Закрыть</p>
-                    <div class="username"> Ваше име:</div>
-                    <div>
-                        <input disabled class="editUsername" type="text" placeholder="alex">
-                    </div>
-                    <div>
-                        <button class="usernameButton" type="button">Изменить</button>
-                    </div>
-                </center>
-            </div>
-
-
+        <div class="yourMessage">
+            <div>12:15 02.02.2016</div>
+            Test
+        </div>
+        <div class="messageChanged"><p>
+            <div>User:1</div>
+            <div>12:15 02.02.2016</div>
+            <br> Hello</p></div>
+        <div class="yourMessage">
+            <div>12:15 02.02.2016</div>
+            Test 2
+        </div>
+        <div class="SomeoneMessage"><p>
+            <div>User:1</div>
+            <div>12:15 02.02.2016</div>
+            <br> =)</p></div>
+        <div class="yourMessage">
+            <div>12:15 02.02.2016</div>
+            Test
+        </div>
+        <div class="SomeoneMessage"><p>
+            <div>User:1</div>
+            <div>12:15 02.02.2016</div>
+            <br> Hellвврпвдрпврпвлрплврпвлпвврппврпвлрпвлпвasfasfsafs aghajjuiHellвврпвдрпврпвлрплврпвлпвврппвр
+            пвлрпвлпвasfasfsafsaghajjuiHellвврпвдрпврпвлрплврпвлпвврппврпвлрпвлпвasfasfsafsaghajju
+            iHellвврпвдрпврпвлрплврпвлпвврппврпвлрпвлпвasfasfsafsaghajjuiHellвврпвдрпвр
+            пвлрплврпвлпвврппврпвлрпвлпвasfasfsafsa ghajjuiHellвврпвдрпврпвлрплврпвлпвврп
+            пврпвлрпвлпвasfasfsafsaghajjuiHellвврпвдрп врпвлрплврпвлпвврппв рпвлрпвлпвasfasfs afsaghajjui,ymtnrsf
+            dxcvgbjkll;kjhgfdfsdfghjkl;jkh jgkfhdngsbfo</p></div>
+        <div class="yourMessage">
+            <div>12:15 02.02.2016</div>
+            Test 2
         </div>
 
 
+    </div>
+    <div id="parent_popup">
+        <div id="popup">
+            <div style="text-align: center;">
+                <p style="cursor: pointer;" onclick="document.getElementById('parent_popup').style.display='none';">
+                    Закрыть(X)</p>
+                <div class="username"> Ваше име:</div>
+                <div>
+                    <input disabled class="editUsername" type="text" placeholder="alex">
+                </div>
+                <div>
+                    <button class="usernameButton" type="button">Изменить</button>
+                </div>
+            </div>
+        </div>
 
 
-
-        <section class="writePart">
-
-            <button class="enterMessage" type="button">
-                <a><img class="message" src="message.png" alt="Connection problems"></a>
-            </button>
-            <textarea class="message" placeholder="Введите сообщение"></textarea>
+    </div>
 
 
-        </section>
-
-    </main>
+    <section class="writePart">
 
 
-    <footer>Maded for you in February 2016, by Volk Aleksander, BSU</footer>
+        <button class="enterMessage" type="button">
+            <a><img class="message" src="message.png" alt="Connection problems"></a>
+        </button>
+
+        <textarea class="message" placeholder="Введите сообщение.  Вы можите изменять размер этой области."></textarea>
+
+
+    </section>
+
+</main>
+
+
+<footer>Maded for you in February 2016, by Volk Aleksander, BSU</footer>
 </body>
 
 </html>
