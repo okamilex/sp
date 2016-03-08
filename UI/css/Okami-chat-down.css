@@ -18,7 +18,6 @@ textarea.message {
 button.enterMessage {
     
     padding-top: 2px;
-    margin-top: 1.5em;
     display: inline-block;
     
     
@@ -27,7 +26,7 @@ button.enterMessage {
     max-height: 50%;
     border: solid grey;
     border-radius: 20%;
-    vertical-align: center;
+    vertical-align: middle;
     background-color: lavender;
 }
 

@@ -5,149 +5,95 @@
     <meta charset="UTF-8">
     <title>Okami-chat</title>
 
-    <link rel="stylesheet" href="css/Okami-chat-up.css" />
-    <link rel="stylesheet" href="css/Okami-chat.css" />
-    <link rel="stylesheet" href="css/Okami-chat-down.css" />
-    <link rel="stylesheet" href="../../resources/css/fonts.css" />
-    <link rel="stylesheet" href="css/responsive.css" />
-    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/Okami-chat-up.css"/>
+    <link rel="stylesheet" href="css/Okami-chat.css"/>
+    <link rel="stylesheet" href="css/Okami-chat-down.css"/>
+    <link rel="stylesheet" href="../../resources/css/fonts.css"/>
+    <link rel="stylesheet" href="css/responsive.css"/>
+    <link rel="stylesheet" href="css/normalize.css"/>
+    <script src="js/Okamichat.js"></script>
 
 </head>
 
-<body>
+<body onload="run();">
 
 
-
-    <header class="header">
-
-        <ul>
-            <li>
-                <a class="active"><h1 class="section-headline">Okami-Chat</h1></a>
-            </li>
-            <li>
-                <a>
-                    <p class="changeName" onclick="document.getElementById('parent_popup').style.display='block';">
-                        Изменить имя</p>
-                </a>
-            </li>
-
-            <li>
-                <a><img class="connectionError" src="error.png" alt="Connection problems"></a>
-            </li>
-        </ul>
-    </header>
-    <div id="parent_popup">
-        <div id="popup">
-            <div style="text-align: center;">
-                <p style="cursor: pointer;" onclick="document.getElementById('parent_popup').style.display='none';">
-                    Закрыть(X)</p>
-                <div class="username"> Ваше име:</div>
-                <div>
-                    <input disabled class="editUsername" type="text" placeholder="alex">
-                </div>
-                <div>
-                    <button class="usernameButton" type="button">Изменить</button>
-                </div>
+<header class="header">
+    <ul>
+        <li>
+            <a class="active"><h1 class="section-headline">Okami-Chat</h1></a>
+        </li>
+        <li>
+            <a>
+                <p class="changeName" onclick="document.getElementById('parent_popup').style.display='block';">
+                    Изменить имя</p>
+            </a>
+        </li>
+        <li>
+            <a><img class="connectionError" src="error.png" alt="Connection problems"></a>
+        </li>
+    </ul>
+</header>
+<div id="parent_popup">
+    <div id="popup">
+        <div style="text-align: center;">
+            <p style="cursor: pointer;" onclick="document.getElementById('parent_popup').style.display='none';">
+                Закрыть(X)</p>
+            <div class="username"> Ваше име:</div>
+            <div>
+                <input id="username" class="editUsername" type="text" placeholder="alex">
+            </div>
+            <div>
+                <button class="usernameButton" type="button">Изменить</button>
             </div>
         </div>
     </div>
+</div>
 
-    <main>
-        <div class="centralPart">
-            <div class="space">-</div>
-            <div class="yourMessage">
-                <div>12:15 02.02.2016</div>
-                Test
-                <div>
-                    <a><img class="connectionError" src="pen1.png" alt="Connection problems"></a>
-                    <a><img class="connectionError" src="delete.png" alt="Connection problems"></a>
-                </div>
-            </div>
-            <div class="SomeoneMessage">
-                <p>
-                    <div>User:1</div>
-                    <div>12:15 02.02.2016</div>
-                    <br> Hello</p>
-            </div>
-            <div class="yourMessageChanged">
-                <div>12:15 02.02.2016</div>
-                Test 2
-                <div>
-                    <a><img class="connectionError" src="pen1.png" alt="Connection problems"></a>
-                    <a><img class="connectionError" src="delete.png" alt="Connection problems"></a>
-                </div>
-            </div>
-            <div class="messageDeleted">
-                <div>User:1</div>
-            </div>
+<main>
+    <div class="centralPart">
+        <div class="space">-</div>
 
-            <div class="yourMessage">
-                <div>12:15 02.02.2016</div>
-                Test
-                <div>
-                    <a><img class="connectionError" src="pen1.png" alt="Connection problems"></a>
-                    <a><img class="connectionError" src="delete.png" alt="Connection problems"></a>
-                </div>
-            </div>
-            <div class="messageChanged">
-                <p>
-                    <div>User:1</div>
-                    <div>12:15 02.02.2016</div>
-                    <br> Hello</p>
-            </div>
-            <div class="yourMessage">
-                <div>12:15 02.02.2016</div>
-                Test 2
-                <div>
-                    <a><img class="connectionError" src="pen1.png" alt="Connection problems"></a>
-                    <a><img class="connectionError" src="delete.png" alt="Connection problems"></a>
-                </div>
-            </div>
-            <div class="SomeoneMessage">
-                <p>
-                    <div>User:1</div>
-                    <div>12:15 02.02.2016</div>
-                    <br> =)</p>
-            </div>
-            <div class="yourMessage">
-                <div>12:15 02.02.2016</div>
-                Test
-                <div>
-                    <a><img class="connectionError" src="pen1.png" alt="Connection problems"></a>
-                    <a><img class="connectionError" src="delete.png" alt="Connection problems"></a>
-                </div>
-            </div>
-            <div class="SomeoneMessage">
-                <p>
-                    <div>User:1</div>
-                    <div>12:15 02.02.2016</div>
-                    <br> Hellвврпвдрпврпвлрплврпвлпвврппврпвлрпвлпвasfasfsafs aghajjuiHellвврпвдрпврпвлрплврпвлпвврппвр пвлрпвлпвasfasfsafsaghajjuiHellвврпвдрпврпвлрплврпвлпвврппврпвлрпвлпвasfasfsafsaghajju
-                    iHellвврпвдрпврпвлрплврпвлпвврппврпвлрпвлпвasfasfsafsaghajjuiHellвврпвдрпвр пвлрплврпвлпвврппврпвлрпвлпвasfasfsafsa
-                    ghajjuiHellвврпвдрпврпвлрплврпвлпвврп пврпвлрпвлпвasfasfsafsaghajjuiHellвврпвдрп врпвлрплврпвлпвврппв
-                    рпвлрпвлпвasfasfs afsaghajjui,ymtnrsf dxcvgbjkll;kjhgfdfsdfghjkl;jkh jgkfhdngsbfo</p>
-            </div>
-            <div class="yourMessage">
-                <div>12:15 02.02.2016</div>
-                Test 2
-                <div>
-                    <a><img class="connectionError" src="pen1.png" alt="Connection problems"></a>
-                    <a><img class="connectionError" src="delete.png" alt="Connection problems"></a>
-                </div>
-            </div>
+        <div class="messageDeleted">
+            <div>User:1</div>
         </div>
 
 
+        <div class="messageChanged">
+            <p>
+            <div>User:1</div>
+            <div>12:15 02.02.2016</div>
+            <br> Hello
+            </p>
+        </div>
 
 
-        <section class="writePart">
-            <button class="enterMessage" type="button">
-                <a><img class="message" src="message.png" alt="Connection problems"></a>
-            </button>
-            <textarea class="message" placeholder="Введите сообщение.  Вы можите изменять размер этой области."></textarea>
-        </section>
-    </main>
+        <div class="SomeoneMessage">
+            <p>
+            <div>User:1</div>
+            <div>12:15 02.02.2016</div>
+            <br> Hellвврпвдрпврпвлрплвр пвлпвврппврпвлрпвлп вasfasfsafs aghajjuiHellвврпвдрпврпвлр плврпвлпвврппвр
+            пвлрпвлпвa sfasfsafsaghajjuiHel lвврпвд рпврпвлрплврпвлпвврп пврпвлрпвлп вasfasfsafsaghajju
+            iHellвврпвдрпвр пвлрплврпвлпвврппврпвлрпв лпвasfasfsafsaghajjuiHellвврпв дрпвр пвлрплврпвлпвврп
+            пврпвлрпвлпвasfasfsafsa
+            ghajjuiHellвврпвдрпврпвлрплврпвлпвврп пврпвлрпвлпвasfasfsafsaghajjuiHellвврпвдрп врпвлрплврпвлпвврппв
+            рпвлрпвлпвasfasfs afsaghajjui,ymtnrsf dxcvgbjkll;kjhgfdfsdfghjkl;jkh jgkfhdngsbfo
+            </p>
+        </div>
 
-    <footer>Maded for you in February 2016, by Volk Aleksander, BSU</footer>
+    </div>
+
+
+    <section class="writePart">
+        <button class="enterMessage" type="button">
+            <a><img class="message" src="message.png" alt="Connection problems"></a>
+        </button>
+        <textarea id="messageTextarea" class="message"
+                  placeholder="Введите сообщение.  Вы можите изменять размер этой области."></textarea>
+    </section>
+</main>
+
+<footer>Maded for you in February 2016, by Volk Aleksander, BSU</footer>
 </body>
 
 </html>
