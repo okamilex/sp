@@ -9,6 +9,8 @@ function run(){
     var centerPart = document.getElementsByClassName('centralPart')[0];
     centerPart.addEventListener('click', onMassegeClick);
 
+    window.scrollTo(0, document.body.scrollHeight);
+
 }
 
 function onMassegeClick(evtObj) {
@@ -52,6 +54,7 @@ function onMessageEnter(){
 
     addMessage(newMessage.value);
     newMessage.value = '';
+    window.scrollTo(0, document.body.scrollHeight);
 
 }
 
