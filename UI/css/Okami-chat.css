@@ -28,9 +28,9 @@ div.SomeoneMessage {
 div.space {
 
     background-color: white;
+    text-align: center;
 
-
-    height: 30%;
+    height: 70px;
 }
 div.yourMessage {
     margin-top: 10px;
