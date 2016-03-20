@@ -68,7 +68,7 @@ a:hover:not(.active) {
 }
 .active {
     background-color:#4CAF50;
-    max-height: 30px;
+    max-height: 50px;
 }
 img.connectionError {
     max-height: 20px;
@@ -101,32 +101,8 @@ img.connectionError {
     width: 20%;
     color: snow;
 }
-.navbar-collapse {
-    width: auto;
-    border-top: 0;
-    -webkit-box-shadow: none;
-            box-shadow: none;
-  }
-  .navbar-collapse.collapse {
-    display: block !important;
-    height: auto !important;
-    padding-bottom: 0;
-    overflow: visible !important;
-  }.navbar-nav {
-    float: left;
-    margin: 0;
-  }
-   .nav {
-  padding-left: 0;
-  margin-bottom: 0;
-  list-style: none;
+.nav-fix {
+    margin-left: 10%;
 }
-   @media (max-device-width: 480px) and (orientation: landscape) {
-  .navbar-fixed-top .navbar-collapse,
-  .navbar-fixed-bottom .navbar-collapse {
-    max-height: 200px;
-  }
-}
-
 
 

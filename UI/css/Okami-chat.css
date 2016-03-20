@@ -9,12 +9,13 @@ body {
     margin: auto;
 }
 div.centralPart {
-    margin-bottom:  25%;
+    margin-top: 1%;
+    margin-bottom:  10%;
     width: 100%;  
     border-color: snow;
     max-height: 50%;    
 }
-div.SomeoneMessage {
+div.someoneMessage {
     margin-top: 10px;
     border-radius: 20px;
     border: 4px solid midnightblue;

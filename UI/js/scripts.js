@@ -1,4 +1,25 @@
-function run(){
+var uniqueId = function () {
+    var date = Date.now();
+    var random = Math.random() * Math.random();
+
+    return Math.floor(date * random).toString();
+};
+
+var theMessage = function (text) {
+    return {
+        date: Date(),
+        author: user,
+        messageText: text,
+        isChanged: false,
+        isDeleted: false,
+        id: uniqueId()
+    };
+};
+
+var user = 'alex';
+var messageList = [];
+
+function run() {
     var usernameButton = document.getElementsByClassName('usernameButton')[0];
     var messageButton = document.getElementsByClassName('enterMessage')[0];
 
@@ -10,8 +31,18 @@ function run(){
     centerPart.addEventListener('click', onMassegeClick);
 
     window.scrollTo(0, document.body.scrollHeight);
+   
+    messageList = restore();
 
+    createAllMessages(messageList);
+    
 }
+
+function createAllMessages(allTasks) {
+    for (var i = 0; i < allTasks.length; i++)
+        addMessage(allTasks[i]);
+}
+
 
 function onMassegeClick(evtObj) {
     if(evtObj.type === 'click' && evtObj.target.classList.contains('deleteButton')){
@@ -25,8 +56,16 @@ function onMassegeClick(evtObj) {
     }
 }
 
-function onDeleteButtonClick(evtObj){
-    evtObj.target.parentElement.parentElement.parentElement.remove();
+function onDeleteButtonClick(evtObj) {
+    var divForMessage = evtObj.target.parentElement.parentElement.parentElement;
+    divForMessage.remove();
+    var id = divForMessage.attributes['message-id'].value;
+    for (var i = 0; i < messageList.length; i++) {
+        if (messageList[i].id != id)
+            continue;
+        messageList[i].isDeleted = true;
+    }
+    store(messageList);
 }
 
 var isChangening = false;
@@ -37,6 +76,7 @@ function onChangeButtonClick(evtObj) {
         var divForButtons = evtObj.target.parentElement.parentElement;
         var pForMessage = divForButtons.parentElement;
         var divForMessage = divForButtons.parentElement.parentElement;
+
         var text = divForButtons.previousElementSibling;
         var newText = document.createElement('textarea');
         newText.id = 'newText';
@@ -44,7 +84,15 @@ function onChangeButtonClick(evtObj) {
         var canselImage = document.createElement('img');
         canselImage.classList.add('canselButton');
         canselImage.setAttribute('src', 'x.png');
-        //newText.value = text.firstElementChild.value;
+
+        var id = divForMessage.attributes['message-id'].value;
+        
+        for (var i = 0; i < messageList.length; i++) {
+            if (messageList[i].id != id)
+                continue;
+            newText.value = messageList[i].messageText;
+        }
+
         pForMessage.removeChild(text);
         pForMessage.removeChild(divForButtons);
         pForMessage.appendChild(newText);
@@ -69,6 +117,14 @@ function onChangeButtonClick(evtObj) {
         divForMessage.classList.add('yourMessageChanged');
         divForButtons.lastElementChild;
         divForButtons.removeChild(canselA);
+        var id = divForMessage.attributes['message-id'].value;
+        for (var i = 0; i < messageList.length; i++) {
+            if (messageList[i].id != id)
+                continue;
+            messageList[i].messageText = messageTextarea.value;
+            messageList[i].isChanged = true;
+        }
+        store(messageList);
     }
 }
 
@@ -85,7 +141,13 @@ function onCanselButtonClick(evtObj)
     pForMessage.removeChild(text);
     pForMessage.removeChild(divForButtons);
     pForMessage.appendChild(divForText);
-    divForText.appendChild(document.createTextNode(messageTextarea.value));
+    var id = divForMessage.attributes['message-id'].value;
+    for (var i = 0; i < messageList.length; i++) {
+        if (messageList[i].id != id)
+            continue;
+        divForText.appendChild(document.createTextNode(messageList[i].messageText));
+    }
+    
     pForMessage.appendChild(divForButtons);
 
     divForButtons.lastElementChild;
@@ -95,29 +157,43 @@ function onCanselButtonClick(evtObj)
 
 function onUsernameChange(){
     var username = document.getElementById('username');
-
+    user = username.value;
+    store(messageList);
+    var foo = document.getElementsByClassName('centralPart')[0];
+    var space = foo.firstChild;
+    while (foo.firstChild) foo.removeChild(foo.firstChild);
+    foo.appendChild(space);
+    messageList = restore();
+    createAllMessages(messageList);
 }
 
 function onMessageEnter(){
-    var newMessage = document.getElementById('messageTextarea');
+    var newMessageText = document.getElementById('messageTextarea');
+    var newMessage = theMessage(newMessageText.value);
 
-    addMessage(newMessage.value);
-    newMessage.value = '';
+    addMessage(newMessage);
+    newMessageText.value = '';
     window.scrollTo(0, document.body.scrollHeight);
-
+    if (newMessage.messageText) {
+        messageList.push(newMessage);
+    }
+    store(messageList);
 }
 
-function addMessage(value) {
-    if(!value){
+function addMessage(newMessage) {
+    if(!newMessage.messageText){
         return;
     }
-    var item = createItem(value);
+    var item = createItem(newMessage);
     var items = document.getElementsByClassName('centralPart')[0];
 
+    
     items.appendChild(item);
+    
+
 }
 
-function createItem(text){
+function createItem(newMessage) {
     var divForMessage = document.createElement('div');
     var pForMessage = document.createElement('p');
     var divForTime = document.createElement('div');
@@ -135,16 +211,59 @@ function createItem(text){
     changeAnchor.appendChild(changeImage);
     divForButtons.appendChild(deleteAnchor);
     divForButtons.appendChild(changeAnchor);
-    var d = new Date();
-    var t= d.getTime();
-    divForTime.appendChild(document.createTextNode(d.toDateString()+" "+d.toTimeString()));
+    var d = newMessage.date;
+    divForTime.appendChild(document.createTextNode(d));
     divForMessage.appendChild(pForMessage);
     pForMessage.appendChild(divForTime);
     pForMessage.appendChild(divForText);
-    divForText.appendChild(document.createTextNode(text));
-    pForMessage.appendChild(divForButtons);
-    divForMessage.classList.add('yourMessage');
+    divForText.appendChild(document.createTextNode(newMessage.messageText));
+    
+    divForMessage.setAttribute('message-id', newMessage.id);
+    if (newMessage.author == user) {
+        pForMessage.appendChild(divForButtons);
+        divForMessage.classList.add('yourMessage');
+        if (newMessage.isChanged) {
+            divForMessage.classList.remove('yourMessage');
+            divForMessage.classList.add('yourMessageChanged');
+        }
+        if (newMessage.isDeleted) {
+            divForMessage.removeChild(divForButtons);
+        }
+    } else {
+        if (!newMessage.isDeleted && !newMessage.isChanged) {
+            divForMessage.classList.add('someoneMessage');
+        }
+        if (newMessage.isChanged) {
+            divForMessage.classList.add('messageChanged');
+        }
+        if (newMessage.isDeleted) {
+            divForMessage.classList.add('messageChanged');
+        }
+    }
 
 
     return divForMessage;
+}
+
+function store(listToSave) {
+    
+
+    if (typeof (Storage) == "undefined") {
+        alert('localStorage is not accessible');
+        return;
+    }
+
+    localStorage.setItem("MessagesOkamiUser", user);
+    localStorage.setItem("MessagesOkami", JSON.stringify(listToSave));
+}
+
+function restore() {
+    if (typeof (Storage) == "undefined") {
+        alert('localStorage is not accessible');
+        return;
+    }
+
+    var item = localStorage.getItem("MessagesOkami");
+    user = localStorage.getItem("MessagesOkamiUser");
+    return item && JSON.parse(item);
 }

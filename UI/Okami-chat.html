@@ -8,41 +8,52 @@
     <link rel="stylesheet" href="css/Okami-chat-up.css"/>
     <link rel="stylesheet" href="css/Okami-chat.css"/>
     <link rel="stylesheet" href="css/Okami-chat-down.css"/>
-    <link rel="stylesheet" href="../../resources/css/fonts.css"/>
+    
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    
     <link rel="stylesheet" href="css/responsive.css"/>
     <link rel="stylesheet" href="css/normalize.css"/>
     <script src="js/scripts.js"></script>
-
+    
 </head>
 
 <body onload="run();">
 
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        
+            
+            
+            <div>
 
-<header class="header">
-    <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-            <li>
-                <a class="active">
-                    <h1 class="section-headline">Okami-Chat</h1>
-                </a>
-            </li>
-            <li>
-                <a>
-                    <p class="changeName" onclick="document.getElementById('parent_popup').style.display = 'block';">
-                        Изменить имя
-                    </p>
-                </a>
-            </li>
-            <li>
-                <a><img class="connectionError" src="error.png" alt="Connection problems"></a>
-            </li>
-        </ul>
+                <ul>
+                    <li>
+                        <a class="active">
+                            <h1 class="section-headline">Okami-Chat</h1>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <p class="changeName" onclick="document.getElementById('parent_popup').style.display = 'block';">
+                                Изменить имя
+                            </p>
+                        </a>
+                    </li>
+                    <li>
+                        <a><img class="connectionError" src="error.png" alt="Connection problems"></a>
+                    </li>
+                </ul>
+
+                </div>
+            
+       
     </div>
-</header>
+
+
+
 <div id="parent_popup">
     <div id="popup">
         <div style="text-align: center;">
-            <p style="cursor: pointer;" onclick="document.getElementById('parent_popup').style.display='none';">
+            <p style="cursor: pointer;" onclick="document.getElementById('parent_popup').style.display = 'none';">
                 Закрыть(X)</p>
             <div class="username"> Ваше име:</div>
             <div>
@@ -58,8 +69,8 @@
 <main>
     <div class="centralPart">
         <div class="space">
-            End of story
-            </div>
+
+        </div>
 
         <div class="messageDeleted">
             <div>User:1</div>
@@ -68,23 +79,23 @@
 
         <div class="messageChanged">
             <p>
-            <div>User:1</div>
-            <div>12:15 02.02.2016</div>
-            <br> Hello
+                <div>User:1</div>
+                <div>12:15 02.02.2016</div>
+                <br> Hello
             </p>
         </div>
 
 
-        <div class="SomeoneMessage">
+        <div class="someoneMessage">
             <p>
-            <div>User:1</div>
-            <div>12:15 02.02.2016</div>
-            <br> Hellвврпвдрпврпвлрплвр пвлпвврппврпвлрпвлп вasfasfsafs aghajjuiHellвврпвдрпврпвлр плврпвлпвврппвр
-            пвлрпвлпвa sfasfsafsaghajjuiHel lвврпвд рпврпвлрплврпвлпвврп пврпвлрпвлп вasfasfsafsaghajju
-            iHellвврпвдрпвр пвлрплврпвлпвврппврпвлрпв лпвasfasfsafsaghajjuiHellвврпв дрпвр пвлрплврпвлпвврп
-            пврпвлрпвлпвasfasfsafsa
-            ghajjuiHellвврпвдрпврпвлрплврпвлпвврп пврпвлрпвлпвasfasfsafsaghajjuiHellвврпвдрп врпвлрплврпвлпвврппв
-            рпвлрпвлпвasfasfs afsaghajjui,ymtnrsf dxcvgbjkll;kjhgfdfsdfghjkl;jkh jgkfhdngsbfo
+                <div>User:1</div>
+                <div>12:15 02.02.2016</div>
+                <br> Hellвврпвдрпврпвлрплвр пвлпвврппврпвлрпвлп вasfasfsafs aghajjuiHellвврпвдрпврпвлр плврпвлпвврппвр
+                пвлрпвлпвa sfasfsafsaghajjuiHel lвврпвд рпврпвлрплврпвлпвврп пврпвлрпвлп вasfasfsafsaghajju
+                iHellвврпвдрпвр пвлрплврпвлпвврппврпвлрпв лпвasfasfsafsaghajjuiHellвврпв дрпвр пвлрплврпвлпвврп
+                пврпвлрпвлпвasfasfsafsa
+                ghajjuiHellвврпвдрпврпвлрплврпвлпвврп пврпвлрпвлпвasfasfsafsaghajjuiHellвврпвдрп врпвлрплврпвлпвврппв
+                рпвлрпвлпвasfasfs afsaghajjui,ymtnrsf dxcvgbjkll;kjhgfdfsdfghjkl;jkh jgkfhdngsbfo
             </p>
         </div>
 
@@ -93,7 +104,7 @@
 
     <section class="writePart">
         <input class="enterMessage" type="image" src="message.png" alt="Send" width="48" height="48">
-        
+
         <textarea id="messageTextarea" class="message"
                   placeholder="Введите сообщение.  Вы можите изменять размер этой области."></textarea>
     </section>
