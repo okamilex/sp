@@ -5,29 +5,27 @@ section.writePart {
     display: block;
     border: solid;
     height: 25%;
-    background-color: skyblue;       
+    background-color: skyblue;     
+    vertical-align: middle;  
 }
 textarea.message {
-    padding-top: 2px;
-    margin-top: 1.5em;
-    height: 40%;
-    margin-left: 1%;
-    display: inline-block;
+    position: absolute;
+    top: 30%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    width: 80%;
 }
 
-button.enterMessage {
-    
-    padding-top: 2px;
+.enterMessage {
     display: inline-block;
+    position: absolute;
+    width: 5%;
+    height: auto;
+    left: 5%;
+    top: 30%;
+    transform: translateY(-50%);
     
     
-    top: 50%;
-    max-width: 50%;
-    max-height: 50%;
-    border: solid grey;
-    border-radius: 20%;
-    vertical-align: middle;
-    background-color: lavender;
 }
 
 img.message {

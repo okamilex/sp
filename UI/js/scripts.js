@@ -20,28 +20,77 @@ function onMassegeClick(evtObj) {
     if(evtObj.type === 'click' && evtObj.target.classList.contains('changeButton')){
         onChangeButtonClick(evtObj);
     }
+    if (evtObj.type === 'click' && evtObj.target.classList.contains('canselButton')) {
+        onCanselButtonClick(evtObj);
+    }
 }
 
 function onDeleteButtonClick(evtObj){
     evtObj.target.parentElement.parentElement.parentElement.remove();
 }
 
-function onChangeButtonClick(evtObj){
+var isChangening = false;
+
+function onChangeButtonClick(evtObj) {
+    if (!isChangening) {
+        isChangening = true;
+        var divForButtons = evtObj.target.parentElement.parentElement;
+        var pForMessage = divForButtons.parentElement;
+        var divForMessage = divForButtons.parentElement.parentElement;
+        var text = divForButtons.previousElementSibling;
+        var newText = document.createElement('textarea');
+        newText.id = 'newText';
+        var canselA = document.createElement('a');
+        var canselImage = document.createElement('img');
+        canselImage.classList.add('canselButton');
+        canselImage.setAttribute('src', 'x.png');
+        //newText.value = text.firstElementChild.value;
+        pForMessage.removeChild(text);
+        pForMessage.removeChild(divForButtons);
+        pForMessage.appendChild(newText);
+        pForMessage.appendChild(divForButtons);
+        divForButtons.appendChild(canselA);
+        canselA.appendChild(canselImage);
+    } else {
+        isChangening = false;
+        var divForButtons = evtObj.target.parentElement.parentElement;
+        var divForMessage = divForButtons.parentElement.parentElement;
+        var pForMessage = divForButtons.parentElement;
+        var divForText = document.createElement('div');
+        var text = divForButtons.previousElementSibling;
+        var canselA = divForButtons.lastElementChild;
+        var messageTextarea = document.getElementById('newText');
+        pForMessage.removeChild(text);
+        pForMessage.removeChild(divForButtons);
+        pForMessage.appendChild(divForText);
+        divForText.appendChild(document.createTextNode(messageTextarea.value));
+        pForMessage.appendChild(divForButtons);
+        divForMessage.classList.remove('yourMessage');
+        divForMessage.classList.add('yourMessageChanged');
+        divForButtons.lastElementChild;
+        divForButtons.removeChild(canselA);
+    }
+}
+
+function onCanselButtonClick(evtObj)
+{
+    isChangening = false;
     var divForButtons = evtObj.target.parentElement.parentElement;
     var divForMessage = divForButtons.parentElement.parentElement;
     var pForMessage = divForButtons.parentElement;
     var divForText = document.createElement('div');
     var text = divForButtons.previousElementSibling;
-    var messageTextarea = document.getElementById('messageTextarea');
+    var canselA = divForButtons.lastElementChild;
+    var messageTextarea = document.getElementById('newText');
     pForMessage.removeChild(text);
     pForMessage.removeChild(divForButtons);
     pForMessage.appendChild(divForText);
     divForText.appendChild(document.createTextNode(messageTextarea.value));
     pForMessage.appendChild(divForButtons);
-    divForMessage.classList.remove('yourMessage');
-    divForMessage.classList.add('yourMessageChanged');
-}
 
+    divForButtons.lastElementChild;
+    divForButtons.removeChild(canselA);
+}
 
 
 function onUsernameChange(){
@@ -88,7 +137,7 @@ function createItem(text){
     divForButtons.appendChild(changeAnchor);
     var d = new Date();
     var t= d.getTime();
-    divForTime.appendChild(document.createTextNode(d.toDateString()));
+    divForTime.appendChild(document.createTextNode(d.toDateString()+" "+d.toTimeString()));
     divForMessage.appendChild(pForMessage);
     pForMessage.appendChild(divForTime);
     pForMessage.appendChild(divForText);

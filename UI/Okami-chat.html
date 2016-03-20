@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head lang="en">
@@ -19,20 +19,25 @@
 
 
 <header class="header">
-    <ul>
-        <li>
-            <a class="active"><h1 class="section-headline">Okami-Chat</h1></a>
-        </li>
-        <li>
-            <a>
-                <p class="changeName" onclick="document.getElementById('parent_popup').style.display='block';">
-                    Изменить имя</p>
-            </a>
-        </li>
-        <li>
-            <a><img class="connectionError" src="error.png" alt="Connection problems"></a>
-        </li>
-    </ul>
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li>
+                <a class="active">
+                    <h1 class="section-headline">Okami-Chat</h1>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <p class="changeName" onclick="document.getElementById('parent_popup').style.display = 'block';">
+                        Изменить имя
+                    </p>
+                </a>
+            </li>
+            <li>
+                <a><img class="connectionError" src="error.png" alt="Connection problems"></a>
+            </li>
+        </ul>
+    </div>
 </header>
 <div id="parent_popup">
     <div id="popup">
@@ -87,9 +92,8 @@
 
 
     <section class="writePart">
-        <button class="enterMessage" type="button">
-            <a><img class="message" src="message.png" alt="Connection problems"></a>
-        </button>
+        <input class="enterMessage" type="image" src="message.png" alt="Send" width="48" height="48">
+        
         <textarea id="messageTextarea" class="message"
                   placeholder="Введите сообщение.  Вы можите изменять размер этой области."></textarea>
     </section>
