@@ -31,7 +31,7 @@ function run() {
     centerPart.addEventListener('click', onMassegeClick);
 
     window.scrollTo(0, document.body.scrollHeight);
-   
+    //store(messageList);
     messageList = restore();
 
     createAllMessages(messageList);
@@ -57,13 +57,19 @@ function onMassegeClick(evtObj) {
 }
 
 function onDeleteButtonClick(evtObj) {
-    var divForMessage = evtObj.target.parentElement.parentElement.parentElement;
-    divForMessage.remove();
+    var divForButtons = evtObj.target.parentElement.parentElement;
+    var divForText = divForButtons.previousElementSibling;
+    
+    var pForMessage = divForButtons.parentElement;
+    var divForMessage = divForButtons.parentElement.parentElement;
     var id = divForMessage.attributes['message-id'].value;
+    pForMessage.removeChild(divForText);
+    pForMessage.removeChild(divForButtons);
     for (var i = 0; i < messageList.length; i++) {
         if (messageList[i].id != id)
             continue;
         messageList[i].isDeleted = true;
+        break;
     }
     store(messageList);
 }
@@ -214,12 +220,13 @@ function createItem(newMessage) {
     var d = newMessage.date;
     divForTime.appendChild(document.createTextNode(d));
     divForMessage.appendChild(pForMessage);
-    pForMessage.appendChild(divForTime);
-    pForMessage.appendChild(divForText);
+    
     divForText.appendChild(document.createTextNode(newMessage.messageText));
     
     divForMessage.setAttribute('message-id', newMessage.id);
     if (newMessage.author == user) {
+        pForMessage.appendChild(divForTime);
+        pForMessage.appendChild(divForText);
         pForMessage.appendChild(divForButtons);
         divForMessage.classList.add('yourMessage');
         if (newMessage.isChanged) {
@@ -227,9 +234,15 @@ function createItem(newMessage) {
             divForMessage.classList.add('yourMessageChanged');
         }
         if (newMessage.isDeleted) {
-            divForMessage.removeChild(divForButtons);
+            pForMessage.removeChild(divForText);
+            pForMessage.removeChild(divForButtons);
         }
     } else {
+        var divForUser = document.createElement('div');
+        divForUser.appendChild(document.createTextNode('By: '+newMessage.author));
+        pForMessage.appendChild(divForUser);
+        pForMessage.appendChild(divForTime);
+        pForMessage.appendChild(divForText);
         if (!newMessage.isDeleted && !newMessage.isChanged) {
             divForMessage.classList.add('someoneMessage');
         }
@@ -237,7 +250,8 @@ function createItem(newMessage) {
             divForMessage.classList.add('messageChanged');
         }
         if (newMessage.isDeleted) {
-            divForMessage.classList.add('messageChanged');
+            divForMessage.classList.add('messageDeleted');
+            pForMessage.removeChild(divForText);
         }
     }
 
