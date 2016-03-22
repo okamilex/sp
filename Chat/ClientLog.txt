@@ -1,0 +1,2 @@
+2016-03-22 15:10:02.272| [by.bsu.up.chat.client.Client] Message from server: Hi!
+2016-03-22 15:10:24.392| [by.bsu.up.chat.client.Client] Message from server: It's work!

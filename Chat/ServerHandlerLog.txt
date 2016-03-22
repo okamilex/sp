@@ -1,0 +1,2 @@
+2016-03-22 15:10:02.018| [by.bsu.up.chat.server.ServerHandler] Received new message from user: Hi!
+2016-03-22 15:10:23.872| [by.bsu.up.chat.server.ServerHandler] Received new message from user: It's work!
