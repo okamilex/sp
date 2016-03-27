@@ -1,2 +1,6 @@
 2016-03-22 15:10:02.018| [by.bsu.up.chat.server.ServerHandler] Received new message from user: Hi!
 2016-03-22 15:10:23.872| [by.bsu.up.chat.server.ServerHandler] Received new message from user: It's work!
+2016-03-27 10:31:38.148| [by.bsu.up.chat.server.ServerHandler] Received new message from user: dfghb
+2016-03-27 10:36:09.931| [by.bsu.up.chat.server.ServerHandler] Could not parse message.
+2016-03-27 10:37:17.703| [by.bsu.up.chat.server.ServerHandler] Could not parse message.
+2016-03-27 10:39:28.029| [by.bsu.up.chat.server.ServerHandler] Could not parse message.
