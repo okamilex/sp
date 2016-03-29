@@ -22,6 +22,7 @@ var messageList = [];
 function run() {
     var usernameButton = document.getElementsByClassName('usernameButton')[0];
     var messageButton = document.getElementsByClassName('enterMessage')[0];
+    messageList = 
 
 
     usernameButton.addEventListener('click', onUsernameChange);
@@ -33,6 +34,11 @@ function run() {
     window.scrollTo(0, document.body.scrollHeight);
     //store(messageList);
     messageList = restore();
+    if (messageList == null) {
+        messageList = [];
+        store(messageList);
+        messageList = restore();
+    }
 
     createAllMessages(messageList);
     
