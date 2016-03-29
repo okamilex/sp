@@ -4,3 +4,7 @@
 2016-03-27 10:36:09.931| [by.bsu.up.chat.server.ServerHandler] Could not parse message.
 2016-03-27 10:37:17.703| [by.bsu.up.chat.server.ServerHandler] Could not parse message.
 2016-03-27 10:39:28.029| [by.bsu.up.chat.server.ServerHandler] Could not parse message.
+2016-03-29 20:09:50.58| [by.bsu.up.chat.server.ServerHandler] Received new message from user: gg
+2016-03-29 20:21:06.377| [by.bsu.up.chat.server.ServerHandler] Received new message from user: fd
+2016-03-29 20:24:57.155| [by.bsu.up.chat.server.ServerHandler] Received new message from user: gf
+2016-03-29 20:26:07.29| [by.bsu.up.chat.server.ServerHandler] Received new message from user: gf

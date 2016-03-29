@@ -1,3 +1,5 @@
 2016-03-22 15:10:02.272| [by.bsu.up.chat.client.Client] Message from server: Hi!
 2016-03-22 15:10:24.392| [by.bsu.up.chat.client.Client] Message from server: It's work!
 2016-03-27 10:31:39.135| [by.bsu.up.chat.client.Client] Message from server: dfghb
+2016-03-29 20:09:51.191| [by.bsu.up.chat.client.Client] Message from server: gg
+2016-03-29 20:21:07.279| [by.bsu.up.chat.client.Client] Message from server: fd
