@@ -1,5 +1,6 @@
 package by.bsu.up.chat.common.models;
 
+import javax.json.JsonObject;
 import java.io.Serializable;
 
 public class Message implements Serializable {
@@ -8,6 +9,34 @@ public class Message implements Serializable {
     private String author;
     private long timestamp;
     private String text;
+    private String isEdit;
+
+    public Message() {
+        this.id = "";
+        this.author = "";
+        this.timestamp = 0;
+        this.text = "";
+        this.isEdit = "";
+    }
+
+    public Message(JsonObject temp) {
+        this.author = temp.getString("author");
+        this.timestamp = temp.getJsonNumber("timestamp").longValue();
+        this.text = temp.getString("message");
+        if(temp.size() == 5)
+        this.isEdit = temp.getString("isEdit");
+        else
+        this.isEdit = "";
+        this.id = temp.getString("id");
+    }
+
+    public String getIsEdit() {
+        return isEdit;
+    }
+
+    public void setIsEdit(String isEdit) {
+        this.isEdit = isEdit;
+    }
 
     public String getId() {
         return id;

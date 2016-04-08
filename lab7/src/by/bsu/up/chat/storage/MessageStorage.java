@@ -32,6 +32,9 @@ public interface MessageStorage {
      */
     boolean removeMessage(String messageId);
 
+    void loadMessages();
+    void saveMessages(List<Message> messages );
+
 
     /**
      * @return the amount of stored messages
