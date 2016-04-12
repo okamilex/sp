@@ -1,0 +1,6 @@
+HTTP/1.1 200 OK
+Date: Tue, 29 Mar 2016 17:25:06 GMT
+Access-control-allow-origin: *
+Content-length: 51
+
+{"messages":["c1","c2","c3","c4"],"token":"TN91EN"}

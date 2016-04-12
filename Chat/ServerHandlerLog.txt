@@ -8,3 +8,19 @@
 2016-03-29 20:21:06.377| [by.bsu.up.chat.server.ServerHandler] Received new message from user: fd
 2016-03-29 20:24:57.155| [by.bsu.up.chat.server.ServerHandler] Received new message from user: gf
 2016-03-29 20:26:07.29| [by.bsu.up.chat.server.ServerHandler] Received new message from user: gf
+2016-04-12 11:41:47.202| [by.bsu.up.chat.server.ServerHandler] Received new message from user: gf
+2016-04-12 11:50:07.659| [by.bsu.up.chat.server.ServerHandler] Received new message from user: hhhg
+2016-04-12 11:50:26.956| [by.bsu.up.chat.server.ServerHandler] Received new message from user: mbm
+2016-04-12 11:51:26.475| [by.bsu.up.chat.server.ServerHandler] Received new message from user: hvhj
+2016-04-12 11:52:15.83| [by.bsu.up.chat.server.ServerHandler] Received new message from user: safsaf
+2016-04-12 11:57:23.358| [by.bsu.up.chat.server.ServerHandler] Received new message from user: hjh
+2016-04-12 11:57:23.476| [by.bsu.up.chat.server.ServerHandler] Received new message from user: 
+2016-04-12 11:57:51.001| [by.bsu.up.chat.server.ServerHandler] Received new message from user: jl
+2016-04-12 11:59:29.639| [by.bsu.up.chat.server.ServerHandler] Received new message from user: hjhj
+2016-04-12 12:12:31.986| [by.bsu.up.chat.server.ServerHandler] Received new message from user: «¤®«
+2016-04-12 12:12:34.593| [by.bsu.up.chat.server.ServerHandler] Received new message from user: ghh
+2016-04-12 12:13:31.257| [by.bsu.up.chat.server.ServerHandler] Received new message from user: hvhj
+2016-04-12 12:19:11.859| [by.bsu.up.chat.server.ServerHandler] Received new message from user: hkh44
+2016-04-12 12:22:10.339| [by.bsu.up.chat.server.ServerHandler] Received new message from user: hh
+2016-04-12 13:24:35.1| [by.bsu.up.chat.server.ServerHandler] Received new message from user: first
+2016-04-12 13:24:44.008| [by.bsu.up.chat.server.ServerHandler] Received new message from user: second
