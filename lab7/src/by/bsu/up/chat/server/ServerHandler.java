@@ -32,7 +32,7 @@ public class ServerHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
         Response response;
-
+        messageStorage.loadMessages();
         try {
             response = dispatch(httpExchange);
         } catch (Throwable e) {
@@ -91,7 +91,7 @@ public class ServerHandler implements HttpHandler {
 
     private Response doPost(HttpExchange httpExchange) {
         try {
-            Message message = MessageHelper.getClientMessage(httpExchange.getRequestBody());
+            Message message = MessageHelper.getClientMessage(httpExchange.getRequestBody(),true);
             logger.info(String.format("Received new message from user: %s", message));
             messageStorage.addMessage(message);
             return Response.ok();
@@ -102,29 +102,26 @@ public class ServerHandler implements HttpHandler {
     }
 
     private Response doPut(HttpExchange httpExchange) {
-	try {
-            Message message = MessageHelper.getClientMessage(httpExchange.getRequestBody());
+        try {
+            Message message = MessageHelper.getClientMessage(httpExchange.getRequestBody(),false);
             messageStorage.updateMessage(message);
             return Response.ok();
         } catch (ParseException e) {
             logger.error("Could not parse message.", e);
             return new Response(Constants.RESPONSE_CODE_BAD_REQUEST, "Incorrect request body");
         }
-        return Response.withCode(Constants.RESPONSE_CODE_NOT_IMPLEMENTED);
     }
 
     private Response doDelete(HttpExchange httpExchange) {
-	String query = httpExchange.getRequestURI().getQuery();
-        if (query == null) {
-            return Response.badRequest("Absent query in request");
+        try {
+            Message message = MessageHelper.getClientMessage(httpExchange.getRequestBody(),false);
+            messageStorage.removeMessage(message.getId());
+            return Response.ok();
+        } catch (ParseException e) {
+            logger.error("Could not parse message.", e);
+            return new Response(Constants.RESPONSE_CODE_BAD_REQUEST, "Incorrect request body");
         }
-        Map<String, String> map = queryToMap(query);
-        String token = map.get(Constants.REQUEST_PARAM_MESSAGE_ID);
-        messageStorage.removeMessage(token);
-        return Response.ok();
-        return Response.withCode(Constants.RESPONSE_CODE_NOT_IMPLEMENTED);
     }
-
     private Response doOptions(HttpExchange httpExchange) {
         httpExchange.getResponseHeaders().add(Constants.REQUEST_HEADER_ACCESS_CONTROL_METHODS,Constants.HEADER_VALUE_ALL_METHODS);
         return Response.ok();
@@ -133,11 +130,9 @@ public class ServerHandler implements HttpHandler {
     private void sendResponse(HttpExchange httpExchange, Response response) {
         try (OutputStream os = httpExchange.getResponseBody()) {
             byte[] bytes = response.getBody().getBytes();
-
-            Headers headers = httpExchange.getResponseHeaders();
-            headers.add(Constants.REQUEST_HEADER_ACCESS_CONTROL_ORIGIN,"*");
-            httpExchange.sendResponseHeaders(response.getStatusCode(), bytes.length);
-
+            Headers headers = httpExchange.getResponseHeaders(); // !!!
+            headers.add("Access-Control-Allow-Origin","*");      // !!!
+            httpExchange.sendResponseHeaders(200, bytes.length);
             os.write( bytes);
             // there is no need to close stream manually
             // as try-catch with auto-closable is used

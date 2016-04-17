@@ -23,10 +23,7 @@ public class Message implements Serializable {
         this.author = temp.getString("author");
         this.timestamp = temp.getJsonNumber("timestamp").longValue();
         this.text = temp.getString("message");
-        if(temp.size() == 5)
         this.isEdit = temp.getString("isEdit");
-        else
-        this.isEdit = "";
         this.id = temp.getString("id");
     }
 
@@ -77,6 +74,7 @@ public class Message implements Serializable {
                 ", author='" + author + '\'' +
                 ", timestamp=" + timestamp +
                 ", text='" + text + '\'' +
+                ", isEdit=' "+isEdit+'\''+
                 '}';
     }
 }

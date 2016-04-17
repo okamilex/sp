@@ -1,10 +1,11 @@
+'use strict';
+
 var uniqueId = function () {
     var date = Date.now();
     var random = Math.random() * Math.random();
 
     return Math.floor(date * random).toString();
 };
-
 var theMessage = function (text) {
     return {
         date: Date(),
@@ -15,9 +16,53 @@ var theMessage = function (text) {
         id: uniqueId()
     };
 };
-
 var user = 'alex';
 var messageList = [];
+var mainUrl = 'http://192.168.136.1:8080/chat';
+var token = 'TN11EN';
+var isChangening = false;
+
+
+
+function postMessage(newMessage) {
+    ajax('POST', mainUrl, JSON.stringify(newMessage), function () {
+        
+    });
+};
+
+function deleteMessage(delMessage) {
+    ajax('DELETE', mainUrl, JSON.stringify(delMessageDelete), function () {
+    });
+};
+
+function putMessage(putingMessage) {
+    ajax('POST', mainUrl, JSON.stringify(putingMessage), function () {
+    });
+};
+
+function getMessageHistory() {
+    var url = mainUrl + '?token=' + token;
+    ajax('GET', url, function(responseText) {
+        var json = JSON.parse(responseText);
+        if (messageList) {
+            for (var i = 0; i < json.messages.length; i++) {
+                messageList.push(json.messages[i]);
+            }
+        } else {
+            messageList = json.messages;
+        }
+        token = json.token;
+        removeAllMessages();
+        createAllMessages(messageList);
+        removeAllMessages();
+        createAllMessages(messageList);
+    });
+}
+
+function loop() {
+    getMessageHistory();
+    setTimeout(loop(), 1000);
+}
 
 function run() {
     var usernameButton = document.getElementsByClassName('usernameButton')[0];
@@ -31,17 +76,15 @@ function run() {
     var centerPart = document.getElementsByClassName('centralPart')[0];
     centerPart.addEventListener('click', onMassegeClick);
 
-    window.scrollTo(0, document.body.scrollHeight);
+ //   window.scrollTo(0, document.body.scrollHeight);
     //store(messageList);
-    messageList = restore();
-    if (messageList == null) {
-        messageList = [];
-        store(messageList);
-        messageList = restore();
-    }
-
-    createAllMessages(messageList);
-    
+   // messageList = restore();
+    //if (messageList == null) {
+    //    messageList = [];
+    //    store(messageList);
+    //    messageList = restore();
+    //}
+    loop();
 }
 
 function createAllMessages(allTasks) {
@@ -49,6 +92,11 @@ function createAllMessages(allTasks) {
         addMessage(allTasks[i]);
 }
 
+function removeAllMessages() {
+    var foo = document.getElementsByClassName('centralPart')[0];
+    var space = foo.firstChild;
+    while (foo.firstChild) foo.removeChild(foo.firstChild);
+}
 
 function onMassegeClick(evtObj) {
     if(evtObj.type === 'click' && evtObj.target.classList.contains('deleteButton')){
@@ -75,12 +123,11 @@ function onDeleteButtonClick(evtObj) {
         if (messageList[i].id != id)
             continue;
         messageList[i].isDeleted = true;
+        deleteMessage(messageList[i]);
         break;
     }
     store(messageList);
 }
-
-var isChangening = false;
 
 function onChangeButtonClick(evtObj) {
     if (!isChangening) {
@@ -130,11 +177,14 @@ function onChangeButtonClick(evtObj) {
         divForButtons.lastElementChild;
         divForButtons.removeChild(canselA);
         var id = divForMessage.attributes['message-id'].value;
+
         for (var i = 0; i < messageList.length; i++) {
             if (messageList[i].id != id)
                 continue;
             messageList[i].messageText = messageTextarea.value;
             messageList[i].isChanged = true;
+            putMessage(messageList[i]);
+            break;
         }
         store(messageList);
     }
@@ -166,7 +216,6 @@ function onCanselButtonClick(evtObj)
     divForButtons.removeChild(canselA);
 }
 
-
 function onUsernameChange(){
     var username = document.getElementById('username');
     user = username.value;
@@ -182,6 +231,7 @@ function onUsernameChange(){
 function onMessageEnter(){
     var newMessageText = document.getElementById('messageTextarea');
     var newMessage = theMessage(newMessageText.value);
+    postMessage(newMessage);
 
     addMessage(newMessage);
     newMessageText.value = '';
@@ -189,20 +239,36 @@ function onMessageEnter(){
     if (newMessage.messageText) {
         messageList.push(newMessage);
     }
-    store(messageList);
+    postMessage(newMessage);
+    //store(messageList);
 }
 
 function addMessage(newMessage) {
     if(!newMessage.messageText){
         return;
     }
-    var item = createItem(newMessage);
-    var items = document.getElementsByClassName('centralPart')[0];
-
-    
-    items.appendChild(item);
-    
-
+    if (document.getElementsByAttribute('message-id', newMessage.id)) {
+        var messageInTheList;
+        for (var i = 0; i < messageList.length; i++) {
+            if (messageList[i].id == id) {
+                messageInTheList = messageList[i];
+                break;
+            }
+        }
+        if (newMessage.isDeleted == true){
+            if (messageInTheList.isDeleted != newMessage.isDeleted) {
+                messageInTheList.isDeleted = true;
+            }
+        }
+        if (newMessage.isChanged == true) {
+            messageInTheList.isChanged = true;
+            messageInTheList.messageText = newMessage.messageText;
+        }
+    } else {
+        var item = createItem(newMessage);
+        var items = document.getElementsByClassName('centralPart')[0];
+        items.appendChild(item);
+    }
 }
 
 function createItem(newMessage) {
