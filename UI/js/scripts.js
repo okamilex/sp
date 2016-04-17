@@ -8,7 +8,7 @@ var uniqueId = function () {
 };
 var theMessage = function (text) {
     return {
-        date: Date(),
+        date: new Date(),
         author: user,
         messageText: text,
         isChanged: false,
@@ -21,6 +21,7 @@ var messageList = [];
 var mainUrl = 'http://192.168.136.1:8080/chat';
 var token = 'TN11EN';
 var isChangening = false;
+var isConnected = false;
 
 
 
@@ -42,14 +43,23 @@ function putMessage(putingMessage) {
 
 function getMessageHistory() {
     var url = mainUrl + '?token=' + token;
-    ajax('GET', url, function(responseText) {
+    ajax('GET', url, null, function(responseText) {
         var json = JSON.parse(responseText);
-        if (messageList) {
-            for (var i = 0; i < json.messages.length; i++) {
-                messageList.push(json.messages[i]);
+        if (!messageList) {
+            messageList = [];
+        }
+        for (var i = 0; i < json.messages.length; i++) {
+            var newMessage = theMessage(json.messages[i].text);
+            newMessage.date.setTime(json.messages[i].timestamp);
+            newMessage.author = json.messages[i].author;
+            newMessage.id = json.messages[i].id;
+            messageList.push(newMessage);
+            if (json.messages[i].text == "DELETED") {
+                newMessage.isDeleted = true;
             }
-        } else {
-            messageList = json.messages;
+            if (json.messages[i].isEdit == "was edited") {
+                newMessage.isChanged = true;
+            }
         }
         token = json.token;
         removeAllMessages();
@@ -61,7 +71,7 @@ function getMessageHistory() {
 
 function loop() {
     getMessageHistory();
-    setTimeout(loop(), 1000);
+    setTimeout(loop, 10000);
 }
 
 function run() {
@@ -247,7 +257,7 @@ function addMessage(newMessage) {
     if(!newMessage.messageText){
         return;
     }
-    if (document.getElementsByAttribute('message-id', newMessage.id)) {
+    if (getElementsByAttribute('message-id', newMessage.id).length > 0) {
         var messageInTheList;
         for (var i = 0; i < messageList.length; i++) {
             if (messageList[i].id == id) {
@@ -255,14 +265,11 @@ function addMessage(newMessage) {
                 break;
             }
         }
-        if (newMessage.isDeleted == true){
-            if (messageInTheList.isDeleted != newMessage.isDeleted) {
+        if (newMessage.text == "DELETED") {
                 messageInTheList.isDeleted = true;
-            }
-        }
-        if (newMessage.isChanged == true) {
+        } else {
             messageInTheList.isChanged = true;
-            messageInTheList.messageText = newMessage.messageText;
+            messageInTheList.messageText = newMessage.text;
         }
     } else {
         var item = createItem(newMessage);
@@ -353,3 +360,88 @@ function restore() {
     user = localStorage.getItem("MessagesOkamiUser");
     return item && JSON.parse(item);
 }
+
+function ajax(method, url, data, continueWith, continueWithError) {
+    var xhr = new XMLHttpRequest();
+
+    continueWithError = continueWithError || defaultErrorHandler;
+    xhr.open(method || 'GET', url, true);
+
+    xhr.onload = function () {
+        if (xhr.readyState !== 4)
+            return;
+
+        if (xhr.status != 200) {
+            continueWithError('Error on the server side, response ' + xhr.status);
+            return;
+        }
+
+        if (isError(xhr.responseText)) {
+            continueWithError('Error on the server side, response ' + xhr.responseText);
+            return;
+        }
+
+        continueWith(xhr.responseText);
+        isConnected = true;
+    };
+
+    xhr.ontimeout = function () {
+        ServerError();
+    }
+
+    xhr.onerror = function (e) {
+        ServerError();
+    };
+
+    xhr.send(data);
+}
+
+function defaultErrorHandler(message) {
+    console.error(message);
+    output(message);
+}
+
+function isError(text) {
+    if (text == "")
+        return false;
+
+    try {
+        var obj = JSON.parse(text);
+    } catch (ex) {
+        return true;
+    }
+
+    return !!obj.error;
+}
+
+function ServerError() {
+    var errorServer = document.getElementsByClassName('ServerError')[0];
+    errorServer.innerHTML = '<img class="alarm" align="right" src="alarm.png" alt="Connection problems">';
+}
+
+var getElementsByAttribute = function (attr, value) {
+    var match = [];
+
+    /* Get the droids we're looking for*/
+    var elements = document.getElementsByTagName("*");
+
+    /* Loop through all elements */
+    for (var ii = 0, ln = elements.length; ii < ln; ii++) {
+
+        if (elements[ii].hasAttribute(attr)) {
+
+            /* If a value was passed, make sure it matches the element's */
+            if (value) {
+
+                if (elements[ii].getAttribute(attr) === value) {
+                    match.push(elements[ii]);
+                }
+            } else {
+                /* Else, simply push it */
+                match.push(elements[ii]);
+            }
+        }
+    }
+    return match;
+};
+
