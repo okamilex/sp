@@ -26,18 +26,32 @@ var isConnected = false;
 
 
 function postMessage(newMessage) {
-    ajax('POST', mainUrl, JSON.stringify(newMessage), function () {
+    var body;
+    if (newMessage.isChanged) {
+        body = createMessage(newMessage.text, "was edited");
+    } else {
+        body = createMessage(newMessage.text, "");
+    }
+    ajax('POST', mainUrl, JSON.stringify(body), function () {
         
     });
 };
 
 function deleteMessage(delMessage) {
-    ajax('DELETE', mainUrl, JSON.stringify(delMessageDelete), function () {
+    
+    ajax('DELETE', mainUrl, JSON.stringify(deleteMessage.id), function () {
     });
 };
 
 function putMessage(putingMessage) {
-    ajax('POST', mainUrl, JSON.stringify(putingMessage), function () {
+    var body;
+    if (putingMessage.isChanged) {
+        body = createMessage(putingMessage.text, "was edited");
+    } else {
+        body = createMessage(putingMessage.text, "");
+    }
+
+    ajax('PUT', mainUrl, JSON.stringify(body), function () {
     });
 };
 
@@ -62,6 +76,14 @@ function getMessageHistory() {
             }
         }
         token = json.token;
+        if (!isConnected) {
+            var errorServer = document.getElementsByClassName('errorIcon')[0];
+            errorServer.innerHTML = '<a><img class="connectionError" src="error.png" alt="Connection problems"></a>';
+        }
+        else {
+            var foo = document.getElementsByClassName('errorIcon')[0];
+            while (foo.firstChild) foo.removeChild(foo.firstChild);
+        }
         removeAllMessages();
         createAllMessages(messageList);
         removeAllMessages();
@@ -70,7 +92,9 @@ function getMessageHistory() {
 }
 
 function loop() {
-    getMessageHistory();
+    if (!isChangening) {
+        getMessageHistory();
+    }
     setTimeout(loop, 10000);
 }
 
@@ -86,14 +110,7 @@ function run() {
     var centerPart = document.getElementsByClassName('centralPart')[0];
     centerPart.addEventListener('click', onMassegeClick);
 
- //   window.scrollTo(0, document.body.scrollHeight);
-    //store(messageList);
-   // messageList = restore();
-    //if (messageList == null) {
-    //    messageList = [];
-    //    store(messageList);
-    //    messageList = restore();
-    //}
+
     loop();
 }
 
@@ -106,6 +123,7 @@ function removeAllMessages() {
     var foo = document.getElementsByClassName('centralPart')[0];
     var space = foo.firstChild;
     while (foo.firstChild) foo.removeChild(foo.firstChild);
+    foo.appendChild(space);
 }
 
 function onMassegeClick(evtObj) {
@@ -133,6 +151,7 @@ function onDeleteButtonClick(evtObj) {
         if (messageList[i].id != id)
             continue;
         messageList[i].isDeleted = true;
+        messageList[i].text = "DELETED";
         deleteMessage(messageList[i]);
         break;
     }
@@ -229,13 +248,7 @@ function onCanselButtonClick(evtObj)
 function onUsernameChange(){
     var username = document.getElementById('username');
     user = username.value;
-    store(messageList);
-    var foo = document.getElementsByClassName('centralPart')[0];
-    var space = foo.firstChild;
-    while (foo.firstChild) foo.removeChild(foo.firstChild);
-    foo.appendChild(space);
-    messageList = restore();
-    createAllMessages(messageList);
+    getMessageHistory();
 }
 
 function onMessageEnter(){
@@ -249,7 +262,7 @@ function onMessageEnter(){
     if (newMessage.messageText) {
         messageList.push(newMessage);
     }
-    postMessage(newMessage);
+    //postMessage(newMessage);
     //store(messageList);
 }
 
@@ -415,8 +428,7 @@ function isError(text) {
 }
 
 function ServerError() {
-    var errorServer = document.getElementsByClassName('ServerError')[0];
-    errorServer.innerHTML = '<img class="alarm" align="right" src="alarm.png" alt="Connection problems">';
+    isConnected = false;    
 }
 
 var getElementsByAttribute = function (attr, value) {
@@ -445,3 +457,12 @@ var getElementsByAttribute = function (attr, value) {
     return match;
 };
 
+function createMessage(msg, edit) {
+    return {
+        author: user,
+        text: msg,
+        id: uniqueId(),
+        timestamp: new Date().getTime(),
+        isEdit: edit
+    }
+}
