@@ -18,7 +18,7 @@ var theMessage = function (text) {
 };
 var user = 'alex';
 var messageList = [];
-var mainUrl = 'http://192.168.136.1:8080/chat';
+var mainUrl = 'http://192.168.136.1:999/chat';
 var token = 'TN11EN';
 var isChangening = false;
 var isConnected = false;
@@ -28,9 +28,9 @@ var isConnected = false;
 function postMessage(newMessage) {
     var body;
     if (newMessage.isChanged) {
-        body = createMessage(newMessage.text, "was edited");
+        body = createMessage(newMessage.messageText, newMessage.id, "was edited");
     } else {
-        body = createMessage(newMessage.text, "");
+        body = createMessage(newMessage.messageText, newMessage.id, "");
     }
     ajax('POST', mainUrl, JSON.stringify(body), function () {
         
@@ -46,9 +46,9 @@ function deleteMessage(delMessage) {
 function putMessage(putingMessage) {
     var body;
     if (putingMessage.isChanged) {
-        body = createMessage(putingMessage.text, "was edited");
+        body = createMessage(putingMessage.messageText, newMessage.id, "was edited");
     } else {
-        body = createMessage(putingMessage.text, "");
+        body = createMessage(putingMessage.messageText, newMessage.id, "");
     }
 
     ajax('PUT', mainUrl, JSON.stringify(body), function () {
@@ -457,11 +457,11 @@ var getElementsByAttribute = function (attr, value) {
     return match;
 };
 
-function createMessage(msg, edit) {
+function createMessage(msg, mesId, edit) {
     return {
         author: user,
         text: msg,
-        id: uniqueId(),
+        id: mesId,
         timestamp: new Date().getTime(),
         isEdit: edit
     }
