@@ -76,6 +76,7 @@ function getMessageHistory() {
                     }
                     if (json.messages[i].isEdit == "was edited") {
                         messageList[j].isChanged = true;
+                        messageList[j].messageText = json.messages[i].text;
                     }
                     newM = false;
                 }
