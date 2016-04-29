@@ -121,6 +121,8 @@ public class MessageHelper {
         String text = ((String) jsonObject.get(Constants.Message.FIELD_TEXT));
         message.setId(id);
         message.setText(text);
+	message.setIsEdit((String) jsonObject.get(Constants.Message.FIELD_IS_EDIT));
+	//logger.info(String.format("isEdit: %s", (String) jsonObject.get(Constants.Message.FIELD_IS_EDIT));
         if (isPost){
             long timestamp = ((long) jsonObject.get(Constants.Message.FIELD_TIMESTAMP));
             String author = ((String) jsonObject.get(Constants.Message.FIELD_AUTHOR));

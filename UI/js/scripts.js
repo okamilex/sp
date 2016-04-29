@@ -27,31 +27,34 @@ var isConnected = false;
 
 function postMessage(newMessage) {
     var body;
-    if (newMessage.isChanged) {
+   
         body = createMessage(newMessage.messageText, newMessage.id, "was edited");
-    } else {
-        body = createMessage(newMessage.messageText, newMessage.id, "");
-    }
+    
     ajax('POST', mainUrl, JSON.stringify(body), function () {
         
     });
 };
 
 function deleteMessage(delMessage) {
+    var body;
+   
+        body = createMessage(delMessage.messageText, delMessage.id, "was deleted");
+  
+        
     
-    ajax('DELETE', mainUrl, JSON.stringify(deleteMessage.id), function () {
+    //ajax('DELETE', mainUrl, JSON.stringify(deleteMessage.id), function () {
+    ajax('POST', mainUrl, JSON.stringify(body), function () {
     });
 };
 
 function putMessage(putingMessage) {
     var body;
-    if (putingMessage.isChanged) {
-        body = createMessage(putingMessage.messageText, newMessage.id, "was edited");
-    } else {
-        body = createMessage(putingMessage.messageText, newMessage.id, "");
-    }
+    
+        body = createMessage(putingMessage.messageText, putingMessage.id, "was edited");
+    
 
-    ajax('PUT', mainUrl, JSON.stringify(body), function () {
+    //ajax('PUT', mainUrl, JSON.stringify(body), function () {
+    ajax('POST', mainUrl, JSON.stringify(body), function () {
     });
 };
 
@@ -63,16 +66,32 @@ function getMessageHistory() {
             messageList = [];
         }
         for (var i = 0; i < json.messages.length; i++) {
-            var newMessage = theMessage(json.messages[i].text);
-            newMessage.date.setTime(json.messages[i].timestamp);
-            newMessage.author = json.messages[i].author;
-            newMessage.id = json.messages[i].id;
-            messageList.push(newMessage);
-            if (json.messages[i].text == "DELETED") {
-                newMessage.isDeleted = true;
+            var newM = true;
+            for (var j = 0; j < messageList.length; j++)
+            {
+                if(messageList[j].id == json.messages[i].id)
+                {
+                    if (json.messages[i].isEdit == "was deleted") {
+                        messageList[j].isDeleted = true;
+                    }
+                    if (json.messages[i].isEdit == "was edited") {
+                        messageList[j].isChanged = true;
+                    }
+                    newM = false;
+                }
             }
-            if (json.messages[i].isEdit == "was edited") {
-                newMessage.isChanged = true;
+            if (newM) {
+                var newMessage = theMessage(json.messages[i].text);
+                newMessage.date.setTime(json.messages[i].timestamp);
+                newMessage.author = json.messages[i].author;
+                newMessage.id = json.messages[i].id;
+                messageList.push(newMessage);
+                if (json.messages[i].isEdit == "was deleted") {
+                    newMessage.isDeleted = true;
+                }
+                if (json.messages[i].isEdit == "was edited") {
+                    newMessage.isChanged = true;
+                }
             }
         }
         token = json.token;

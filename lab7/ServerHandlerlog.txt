@@ -1,73 +1,138 @@
-2016-04-17 23:41:20.821: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='136503477343', author='alex', timestamp=1460925678701, text='null', isEdit=' '}
-2016-04-17 23:41:20.875: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-18 09:26:58.811: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='538492176092', author='alex', timestamp=1460960818813, text='null', isEdit=' '}
-2016-04-18 09:26:58.864: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-18 09:27:07.474: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='85211971178', author='alex', timestamp=1460960827481, text='null', isEdit=' '}
-2016-04-18 09:27:07.489: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-18 09:27:34.389: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='429469832037', author='jkg', timestamp=1460960854340, text='null', isEdit=' '}
-2016-04-18 09:27:34.389: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-18 09:27:35.569: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='592464375800', author='jkg', timestamp=1460960855571, text='null', isEdit=' '}
-2016-04-18 09:27:35.569: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-18 09:30:04.911: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='402554405382', author='alex', timestamp=1460961004900, text='null', isEdit=' '}
-2016-04-18 09:30:04.919: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-18 09:30:11.195: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='642177387178', author='alex', timestamp=1460961011185, text='null', isEdit=' '}
-2016-04-18 09:30:11.202: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-18 09:30:29.752: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='424790545674', author='alex', timestamp=1460961029743, text='null', isEdit=' '}
-2016-04-18 09:30:29.759: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-18 13:24:13.508: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='175858967855', author='alex', timestamp=1460975053491, text='null', isEdit=' '}
-2016-04-18 13:24:13.528: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-18 13:24:15.528: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='175108567986', author='alex', timestamp=1460975055516, text='null', isEdit=' '}
-2016-04-18 13:24:15.537: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-18 13:24:17.13: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='59253450590', author='alex', timestamp=1460975057118, text='null', isEdit=' '}
-2016-04-18 13:24:17.139: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-18 13:24:20.188: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
-2016-04-18 13:26:58.503: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='419436376261', author='alex', timestamp=1460975218500, text='null', isEdit=' '}
-2016-04-18 13:26:58.516: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-18 13:26:59.96: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='130214075164', author='alex', timestamp=1460975219958, text='null', isEdit=' '}
-2016-04-18 13:26:59.972: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-18 13:27:01.693: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='125079836289', author='alex', timestamp=1460975221692, text='null', isEdit=' '}
-2016-04-18 13:27:01.704: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-18 13:27:08.773: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
-2016-04-18 13:33:44.114: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='1148041595884', author='alex', timestamp=1460975624111, text='null', isEdit=' '}
-2016-04-18 13:33:44.121: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-18 13:33:48.661: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='78501358699', author='alex', timestamp=1460975628659, text='null', isEdit=' '}
-2016-04-18 13:33:48.669: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-18 13:34:43.831: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='505305834852', author='alex', timestamp=1460975683829, text='null', isEdit=' '}
-2016-04-18 13:34:43.837: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-18 13:34:45.21: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
-2016-04-19 12:23:09.657: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='461019483173', author='alex', timestamp=1461057789618, text='null', isEdit=' '}
-2016-04-19 12:23:09.703: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-19 12:23:12.021: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='116127090333', author='alex', timestamp=1461057792013, text='null', isEdit=' '}
-2016-04-19 12:23:12.028: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-19 12:23:15.832: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='104214300678', author='alex', timestamp=1461057795824, text='null', isEdit=' '}
-2016-04-19 12:23:15.838: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-19 12:23:18.163: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='47843709278', author='alex', timestamp=1461057798153, text='null', isEdit=' '}
-2016-04-19 12:23:18.173: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-19 12:23:21.238: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
-2016-04-19 12:23:52.029: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='425512943169', author='jfjfj', timestamp=1461057832021, text='null', isEdit=' '}
-2016-04-19 12:23:52.037: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-19 12:24:10.131: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='826784426686', author='jfjfj', timestamp=1461057850104, text='null', isEdit=' '}
-2016-04-19 12:24:10.145: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-19 12:28:29.488: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='3444780282', author='jfjfj', timestamp=1461058109484, text='null', isEdit=' '}
-2016-04-19 12:28:29.488: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-26 11:39:06.85: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='372383988172', author='jff', timestamp=1461659946837, text='null', isEdit=' '}
-2016-04-26 11:39:06.976: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-26 11:42:12.019: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='90434149289', author='jff', timestamp=1461660132002, text='null', isEdit=' '}
-2016-04-26 11:42:12.023: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-26 11:44:37.365: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='136455111944', author='jff', timestamp=1461660277354, text='null', isEdit=' '}
-2016-04-26 11:44:37.365: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-26 11:45:57.463: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='190834795291', author='jff', timestamp=1461660357417, text='null', isEdit=' '}
-2016-04-26 11:45:57.479: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-26 11:46:09.128: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='14455878364', author='alex', timestamp=1461660369120, text='seg', isEdit=' '}
-2016-04-26 11:46:09.13: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-26 11:46:12.783: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='383787556403', author='alex', timestamp=1461660372786, text='sdgh', isEdit=' '}
-2016-04-26 11:46:12.783: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-26 11:46:38.618: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='948873576289', author='alex', timestamp=1461660398612, text='ffdf', isEdit=' '}
-2016-04-26 11:46:38.622: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-26 11:47:15.598: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='111805891892', author='jff', timestamp=1461660435594, text='fff
-sd', isEdit=' '}
-2016-04-26 11:47:15.598: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-26 11:50:18.309: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='817181925798', author='tg', timestamp=1461660618307, text='ggh', isEdit=' '}
-2016-04-26 11:50:18.316: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
-2016-04-26 12:20:49.968: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='107946740397', author='alex', timestamp=1461662449967, text='firefox 2', isEdit=' '}
-2016-04-26 12:20:49.984: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
+
+2016-03-17 16:50:13.898: [by.bsu.up.chat.server.ServerHandler] Received new message from user: first message
+2016-03-17 16:50:37.401: [by.bsu.up.chat.server.ServerHandler] Received new message from user: try post
+2016-03-17 16:51:01.044: [by.bsu.up.chat.server.ServerHandler] Received new message from user: well done
+2016-03-22 22:08:49.163: [by.bsu.up.chat.server.ServerHandler] Received new message from user: message to try
+2016-03-22 22:09:30.124: [by.bsu.up.chat.server.ServerHandler] Received new message from user: second message
+2016-03-22 22:09:58.723: [by.bsu.up.chat.server.ServerHandler] Received new message from user: franz ferdinand
+2016-03-22 22:31:25.472: [by.bsu.up.chat.server.ServerHandler] Received new message from user: part number 2
+2016-03-22 22:31:40.819: [by.bsu.up.chat.server.ServerHandler] Received new message from user: not the last message
+2016-03-22 22:31:46.446: [by.bsu.up.chat.server.ServerHandler] Received new message from user: last message
+2016-03-22 22:42:10.323: [by.bsu.up.chat.server.ServerHandler] Received new message from user: vnerjivr
+2016-03-22 22:42:13.428: [by.bsu.up.chat.server.ServerHandler] Received new message from user: cneuilvbriul
+2016-03-22 22:42:15.769: [by.bsu.up.chat.server.ServerHandler] Received new message from user: ncerqiluvrl
+2016-03-22 22:45:03.656: [by.bsu.up.chat.server.ServerHandler] Received new message from user: part number 3
+2016-03-22 22:45:13.95: [by.bsu.up.chat.server.ServerHandler] Received new message from user: go ahead eagles
+2016-03-22 22:45:22.14: [by.bsu.up.chat.server.ServerHandler] Received new message from user: call of duty
+2016-03-22 23:01:05.574: [by.bsu.up.chat.server.ServerHandler] Received new message from user: part number 3
+2016-03-22 23:01:17.199: [by.bsu.up.chat.server.ServerHandler] Received new message from user: test post method
+2016-03-22 23:01:25.21: [by.bsu.up.chat.server.ServerHandler] Received new message from user: next message
+2016-03-22 23:04:44.086: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
+2016-03-22 23:05:24.411: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Hello, server!
+
+2016-03-28 18:03:10.423: [by.bsu.up.chat.server.ServerHandler] Received new message from user: number four
+2016-03-28 18:03:57.323: [by.bsu.up.chat.server.ServerHandler] Received new message from user: one more message
+2016-03-28 18:04:15.354: [by.bsu.up.chat.server.ServerHandler] Received new message from user: loading time
+
+2016-04-01 16:23:54.059: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='1', author='User1', timestamp=1459169330000, text='Hello, all!'}
+2016-04-01 16:26:21.986: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='2', author='User 2', timestamp=1459169330000, text='WhatвЂ™s up ?'}
+2016-04-01 17:19:08.59: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='1', author='User1', timestamp=1459169330000, text='Hello, all!'}
+2016-04-01 17:19:43.981: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='2', author='User2', timestamp=1459169340000, text='What's up?'}
+2016-04-01 18:55:09.881: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='2', author='User2', timestamp=1459169340000, text='What's up?'}
+2016-04-01 19:07:46.318: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='2', author='User2', timestamp=1459169340000, text='What's up?'}
+2016-04-01 19:07:55.586: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='1', author='User 1', timestamp=1459169330000, text='Hi !'}
+2016-04-01 19:08:09.116: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='3', author='User 1', timestamp=1459169330000, text='IвЂ™m fine, and you ?'}
+2016-04-01 20:55:35.698: [by.bsu.up.chat.server.ServerHandler] Could not send response
+2016-04-01 20:55:55.917: [by.bsu.up.chat.server.ServerHandler] Could not send response
+2016-04-01 20:55:56.909: [by.bsu.up.chat.server.ServerHandler] Could not send response
+2016-04-01 20:55:57.925: [by.bsu.up.chat.server.ServerHandler] Could not send response
+2016-04-01 20:55:58.923: [by.bsu.up.chat.server.ServerHandler] Could not send response
+2016-04-01 20:55:59.922: [by.bsu.up.chat.server.ServerHandler] Could not send response
+2016-04-01 20:57:45.124: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='1', author='User1', timestamp=1459169330000, text='Hello, all!'}
+2016-04-01 21:07:33.534: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='1', author='User 1', timestamp=1459169330000, text='Hi !'}
+2016-04-01 21:07:48.326: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='4', author='User 2', timestamp=1459169330000, text='Me too'}
+2016-04-01 21:18:01.911: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
+2016-04-01 21:19:25.425: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
+2016-04-01 21:25:25.264: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
+2016-04-01 21:28:21.73: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
+2016-04-01 21:32:26.906: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
+2016-04-01 21:34:46.541: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
+2016-04-01 21:36:40.76: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
+2016-04-01 21:39:07.596: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
+2016-04-01 21:40:53.393: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
+2016-04-01 21:43:24.729: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
+2016-04-02 14:44:38.322: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
+2016-04-02 14:47:19.445: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
+2016-04-02 14:48:12.627: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
+2016-04-02 14:51:07.887: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
+2016-04-02 14:54:08.576: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
+2016-04-02 14:56:07.978: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
+2016-04-02 14:58:05.232: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
+2016-04-02 14:58:57.84: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='1', author='User 1', timestamp=1459169330000, text='Hi !'}
+2016-04-02 15:05:10.501: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='3', author='User 1', timestamp=1459169330000, text='I'm fine and you?'}
+2016-04-02 15:08:21.136: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
+2016-04-02 15:09:48.995: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
+2016-04-02 15:12:30.267: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
+2016-04-02 15:14:17.988: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
+2016-04-02 15:15:12.218: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
+2016-04-02 15:16:01.698: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
+2016-04-02 15:16:37.527: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
+2016-04-02 15:17:33.446: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='4', author='User 2', timestamp=1459169330000, text='Me too'}
+2016-04-02 15:25:25.154: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
+2016-04-02 15:29:30.571: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='5', author='User1', timestamp=1459169330000, text='Hello, all!'}
+2016-04-02 15:35:18.73: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
+2016-04-02 15:44:29.537: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
+2016-04-02 15:45:03.571: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
+2016-04-02 15:57:28.89: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
+2016-04-02 15:59:46.87: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
+2016-04-02 16:00:13.67: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
+2016-04-02 16:00:24.085: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
+2016-04-02 16:00:46.459: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
+2016-04-02 16:00:57.568: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
+2016-04-02 16:01:02.108: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
+2016-04-02 16:03:38.836: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
+2016-04-02 16:06:06.32: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
+2016-04-02 16:14:05.687: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
+2016-04-02 16:14:59.963: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
+2016-04-02 22:18:52.942: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='4', author='User 2', timestamp=1459169330000, text='Me too'}
+2016-04-02 22:20:31.922: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
+2016-04-02 22:36:14.523: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='1', author='User 1', timestamp=1459169330000, text='Hi!', isEdit=' '}
+2016-04-02 22:37:01.094: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='2', author='User 2', timestamp=1459169330000, text='What's up?', isEdit=' '}
+2016-04-02 22:37:31.911: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='3', author='User 1', timestamp=1459169330000, text='I'm fine and you?', isEdit=' '}
+2016-04-02 22:40:27.176: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='4', author='User 2', timestamp=1459169330000, text='Me too', isEdit=' '}
+2016-04-08 18:21:52.506: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
+2016-04-08 18:28:27.32: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
+2016-04-08 18:33:00.568: [by.bsu.up.chat.server.ServerHandler] An error occurred when dispatching request.
+2016-04-08 18:36:56.358: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='588551571836', author='User 1', timestamp=1460133416343, text='vwvwrvr', isEdit=' '}
+2016-04-08 18:40:55.356: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='315662396001', author='User 2', timestamp=1460133655345, text='vre', isEdit=' '}
+2016-04-08 18:42:31.213: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='302499048465', author='Cheater', timestamp=1460133751191, text='go ahead eagles', isEdit=' '}
+2016-04-08 18:43:12.113: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='614217063335', author='User 2', timestamp=1460133792095, text='clear me?', isEdit=' '}
+2016-04-08 18:45:26.487: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='413454389311', author='User 2', timestamp=1460133926472, text='proverka', isEdit=' '}
+2016-04-08 19:01:01.053: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='164589572543', author='Nick', timestamp=1460134861038, text='god gave me everything i want', isEdit=' '}
+2016-04-11 00:09:12.921: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='426509715391', author='User 1', timestamp=1460326152884, text='main kampf', isEdit=' '}
+2016-04-11 00:14:47.351: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='178523660941', author='Nick', timestamp=1460326487335, text='gg wp', isEdit=' '}
+2016-04-11 14:49:44.18: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='44045302897', author='Cheater', timestamp=1460378984169, text='my game', isEdit=' '}
+2016-04-11 14:50:56.519: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='94677235604', author='Nick', timestamp=1460379056496, text='my rules', isEdit=' '}
+2016-04-11 15:04:15.658: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='143169551586', author='Cheater', timestamp=1460379855658, text='google chrome', isEdit=' '}
+2016-04-11 15:04:33.739: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='136057622986', author='Nick', timestamp=1460379873718, text='only?', isEdit=' '}
+2016-04-11 15:09:37.131: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='296942381589', author='User 1', timestamp=1460380177100, text='Hi!', isEdit=' '}
+2016-04-11 15:09:53.889: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='534100752479', author='User 2', timestamp=1460380193889, text='What's up?', isEdit=' '}
+2016-04-11 15:10:11.902: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='766379978313', author='User 1', timestamp=1460380211886, text='I'm fine and you?', isEdit=' '}
+2016-04-11 15:10:21.848: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='74875230641', author='User 2', timestamp=1460380221842, text='Me too', isEdit=' '}
+2016-04-11 15:11:18.814: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='622940115073', author='User 2', timestamp=1460380278799, text='Fine too, cockatoo', isEdit=' '}
+2016-04-11 15:12:12.82: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='320691134163', author='Shyshpanchik', timestamp=1460380332810, text='What are going tonight?', isEdit=' '}
+2016-04-11 15:12:46.249: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='331588588003', author='Turtle beach', timestamp=1460380366234, text='Hell knows, any suggestions?', isEdit=' '}
+2016-04-12 18:29:58.15: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='649706343592', author='Shyshpanchik', timestamp=1460478598127, text='anything can go wrong will go wrong', isEdit=' '}
+2016-04-12 18:34:56.804: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='432761802388', author='Turtle beach', timestamp=1460478896788, text='Are you sure?', isEdit=' '}
+2016-04-29 16:22:28.477: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='745994976011', author='alex', timestamp=1461936148478, text='Р°Рµ', isEdit=' '}
+2016-04-29 16:22:58.171: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
+2016-04-29 16:23:46.053: [by.bsu.up.chat.server.ServerHandler] Could not parse message.
+2016-04-29 17:49:03.171: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='357357960431', author='alex', timestamp=1461941343150, text='weruy', isEdit=' '}
+2016-04-29 17:49:05.297: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='481664746195', author='alex', timestamp=1461941345272, text='asyhg', isEdit=' '}
+2016-04-29 17:53:59.54: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='139811476268', author='alex', timestamp=1461941639422, text='rhsdh', isEdit=' '}
+2016-04-29 17:54:04.0: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='691961518244', author='alex', timestamp=1461941643976, text='sdgdsh', isEdit=' '}
+2016-04-29 17:54:17.219: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='691961518244', author='alex', timestamp=1461941657208, text='sdgdsh', isEdit=' '}
+2016-04-29 17:54:28.515: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='139811476268', author='alex', timestamp=1461941668502, text='rhsdhuuuuuuu', isEdit=' '}
+2016-04-29 17:55:55.104: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='139811476268', author='alex', timestamp=1461941719158, text='rhsdh', isEdit=' '}
+2016-04-29 17:59:56.243: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='58929328944', author='alex', timestamp=1461941996225, text='djh', isEdit=' '}
+2016-04-29 18:00:02.862: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='58929328944', author='alex', timestamp=1461942002848, text='djherty', isEdit=' '}
+2016-04-29 18:05:58.28: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='58929328944', author='alex', timestamp=1461942358265, text='djhdsfhhfds', isEdit=' '}
+2016-04-29 18:07:03.055: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='58929328944', author='alex', timestamp=1461942423046, text='djh', isEdit=' '}
+2016-04-29 18:10:30.267: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='58929328944', author='alex', timestamp=1461942623324, text='djh', isEdit=' '}
+2016-04-29 18:13:15.397: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='58929328944', author='alex', timestamp=1461942795386, text='djh', isEdit=' '}
+2016-04-29 18:14:24.129: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='58929328944', author='alex', timestamp=1461942864120, text='djh', isEdit=' '}
+2016-04-29 18:14:37.88: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='691961518244', author='alex', timestamp=1461942877866, text='sdgdshUUUUU', isEdit=' '}
+2016-04-29 18:15:52.326: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='58929328944', author='alex', timestamp=1461942952316, text='djh', isEdit=' was deleted'}
+2016-04-29 18:16:10.663: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='691961518244', author='alex', timestamp=1461942970650, text='sdgdshUUUU', isEdit=' was edited'}
+2016-04-29 18:18:43.782: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='691961518244', author='alex', timestamp=1461943123774, text='sdgdsh', isEdit=' was deleted'}
+2016-04-29 18:18:48.538: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='139811476268', author='alex', timestamp=1461943128524, text='rhsdhUUUU', isEdit=' was edited'}
