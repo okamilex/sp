@@ -18,7 +18,7 @@ var theMessage = function (text) {
 };
 var user = 'alex';
 var messageList = [];
-var mainUrl = 'http://192.168.136.1:999/chat';
+var mainUrl = ' http://192.168.100.7:999/chat';
 var token = 'TN11EN';
 var isChangening = false;
 var isConnected = false;
@@ -28,7 +28,7 @@ var isConnected = false;
 function postMessage(newMessage) {
     var body;
    
-        body = createMessage(newMessage.messageText, newMessage.id, "was edited");
+        body = createMessage(newMessage.messageText, newMessage.id, "");
     
     ajax('POST', mainUrl, JSON.stringify(body), function () {
         

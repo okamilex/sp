@@ -136,3 +136,8 @@
 2016-04-29 18:16:10.663: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='691961518244', author='alex', timestamp=1461942970650, text='sdgdshUUUU', isEdit=' was edited'}
 2016-04-29 18:18:43.782: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='691961518244', author='alex', timestamp=1461943123774, text='sdgdsh', isEdit=' was deleted'}
 2016-04-29 18:18:48.538: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='139811476268', author='alex', timestamp=1461943128524, text='rhsdhUUUU', isEdit=' was edited'}
+2016-05-03 07:53:20.181: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='265958214174', author='alex', timestamp=1462251200124, text='fdj', isEdit=' was edited'}
+2016-05-03 07:53:30.33: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='29268914440', author='alex', timestamp=1462251210311, text='fdhdf', isEdit=' was edited'}
+2016-05-03 07:55:00.513: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='115477811766', author='alex', timestamp=1462251300495, text='dshj', isEdit=' '}
+2016-05-03 07:55:07.881: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='115477811766', author='alex', timestamp=1462251307869, text='dshjsdfkrsje', isEdit=' was edited'}
+2016-05-03 07:55:15.053: [by.bsu.up.chat.server.ServerHandler] Received new message from user: Message{id='115477811766', author='alex', timestamp=1462251315043, text='dshjsdfkrsje', isEdit=' was deleted'}
