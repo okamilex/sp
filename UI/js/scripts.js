@@ -18,7 +18,7 @@ var theMessage = function (text) {
 };
 var user = 'alex';
 var messageList = [];
-var mainUrl = ' http://10.150.3.150:999/chat';
+var mainUrl = ' http://192.168.100.5:999/chat';
 var token = 'TN11EN';
 var isChangening = false;
 var isConnected = false;
@@ -32,13 +32,14 @@ function postMessage(newMessage) {
     
     ajax('POST', mainUrl, JSON.stringify(body), function () {
 		var newMessageText = document.getElementById('messageTextarea');
-		var newMessage = theMessage(newMessageText.value);
-		addMessage(newMessage);
-		newMessageText.value = '';
-		window.scrollTo(0, document.body.scrollHeight);
 		if (newMessage.messageText) {
 			messageList.push(newMessage);
 		}
+		newMessageText.value = '';
+		removeAllMessages();
+		createAllMessages(messageList);
+		window.scrollTo(0, document.body.scrollHeight);
+		
         
     });
 };
@@ -62,7 +63,7 @@ function putMessage(putingMessage) {
         body = createMessage(putingMessage.messageText, putingMessage.id, "was edited");
     
 
-    //ajax('PUT', mainUrl, JSON.stringify(body), function () {
+    
     ajax('POST', mainUrl, JSON.stringify(body), function () {
     });
 };
@@ -257,8 +258,7 @@ function onChangeButtonClick(evtObj) {
     }
 }
 
-function onCanselButtonClick(evtObj)
-{
+function onCanselButtonClick(evtObj) {
     isChangening = false;
     var divForButtons = evtObj.target.parentElement.parentElement;
     var divForMessage = divForButtons.parentElement.parentElement;
@@ -297,9 +297,7 @@ function onMessageEnter(){
 	{
 		var newMessageText = document.getElementById('messageTextarea');
 		var newMessage = theMessage(newMessageText.value);
-		postMessage(newMessage);
-
-		
+		postMessage(newMessage);		
     }
 }
 
