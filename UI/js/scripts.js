@@ -18,7 +18,7 @@ var theMessage = function (text) {
 };
 var user = 'alex';
 var messageList = [];
-var mainUrl = ' http://192.168.100.7:999/chat';
+var mainUrl = ' http://10.150.3.150:999/chat';
 var token = 'TN11EN';
 var isChangening = false;
 var isConnected = false;
@@ -31,6 +31,14 @@ function postMessage(newMessage) {
         body = createMessage(newMessage.messageText, newMessage.id, "");
     
     ajax('POST', mainUrl, JSON.stringify(body), function () {
+		var newMessageText = document.getElementById('messageTextarea');
+		var newMessage = theMessage(newMessageText.value);
+		addMessage(newMessage);
+		newMessageText.value = '';
+		window.scrollTo(0, document.body.scrollHeight);
+		if (newMessage.messageText) {
+			messageList.push(newMessage);
+		}
         
     });
 };
@@ -44,6 +52,7 @@ function deleteMessage(delMessage) {
     
     //ajax('DELETE', mainUrl, JSON.stringify(deleteMessage.id), function () {
     ajax('POST', mainUrl, JSON.stringify(body), function () {
+		
     });
 };
 
@@ -96,14 +105,7 @@ function getMessageHistory() {
             }
         }
         token = json.token;
-        if (!isConnected) {
-            var errorServer = document.getElementsByClassName('errorIcon')[0];
-            errorServer.innerHTML = '<a><img class="connectionError" src="error.png" alt="Connection problems"></a>';
-        }
-        else {
-            var foo = document.getElementsByClassName('errorIcon')[0];
-            while (foo.firstChild) foo.removeChild(foo.firstChild);
-        }
+        isConnected = true;
         removeAllMessages();
         createAllMessages(messageList);
         removeAllMessages();
@@ -115,13 +117,22 @@ function loop() {
     if (!isChangening) {
         getMessageHistory();
     }
+	if (!isConnected) {
+            var errorServer = document.getElementsByClassName('errorIcon')[0];
+            errorServer.innerHTML = '<a><img class="connectionError" src="error.png" alt="Connection problems"></a>';
+        }
+        else {
+            var foo = document.getElementsByClassName('errorIcon')[0];
+            while (foo.firstChild) foo.removeChild(foo.firstChild);
+        }
     setTimeout(loop, 10000);
+	
 }
 
 function run() {
     var usernameButton = document.getElementsByClassName('usernameButton')[0];
     var messageButton = document.getElementsByClassName('enterMessage')[0];
-    messageList = 
+    //messageList = 
 
 
     usernameButton.addEventListener('click', onUsernameChange);
@@ -147,15 +158,21 @@ function removeAllMessages() {
 }
 
 function onMassegeClick(evtObj) {
-    if(evtObj.type === 'click' && evtObj.target.classList.contains('deleteButton')){
-        onDeleteButtonClick(evtObj);
+	if (!isChangening) {
+        getMessageHistory();
     }
-    if(evtObj.type === 'click' && evtObj.target.classList.contains('changeButton')){
-        onChangeButtonClick(evtObj);
-    }
-    if (evtObj.type === 'click' && evtObj.target.classList.contains('canselButton')) {
-        onCanselButtonClick(evtObj);
-    }
+	if(isConnected)
+	{
+		if(evtObj.type === 'click' && evtObj.target.classList.contains('deleteButton')){
+			onDeleteButtonClick(evtObj);
+		}
+		if(evtObj.type === 'click' && evtObj.target.classList.contains('changeButton')){
+			onChangeButtonClick(evtObj);
+		}
+		if (evtObj.type === 'click' && evtObj.target.classList.contains('canselButton')) {
+			onCanselButtonClick(evtObj);
+		}
+	}
 }
 
 function onDeleteButtonClick(evtObj) {
@@ -179,6 +196,7 @@ function onDeleteButtonClick(evtObj) {
 }
 
 function onChangeButtonClick(evtObj) {
+	
     if (!isChangening) {
         isChangening = true;
         var divForButtons = evtObj.target.parentElement.parentElement;
@@ -272,18 +290,17 @@ function onUsernameChange(){
 }
 
 function onMessageEnter(){
-    var newMessageText = document.getElementById('messageTextarea');
-    var newMessage = theMessage(newMessageText.value);
-    postMessage(newMessage);
-
-    addMessage(newMessage);
-    newMessageText.value = '';
-    window.scrollTo(0, document.body.scrollHeight);
-    if (newMessage.messageText) {
-        messageList.push(newMessage);
+	if (!isChangening) {
+        getMessageHistory();
     }
-    //postMessage(newMessage);
-    //store(messageList);
+	if(isConnected)
+	{
+		var newMessageText = document.getElementById('messageTextarea');
+		var newMessage = theMessage(newMessageText.value);
+		postMessage(newMessage);
+
+		
+    }
 }
 
 function addMessage(newMessage) {
