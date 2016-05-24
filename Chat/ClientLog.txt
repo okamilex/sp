@@ -147,3 +147,6 @@
 2016-04-12 13:20:15.611| [by.bsu.up.chat.client.Client] Could not parse message
 2016-04-12 13:24:36.085| [by.bsu.up.chat.client.Client] Message from server: first
 2016-04-12 13:24:44.093| [by.bsu.up.chat.client.Client] Message from server: second
+2016-05-24 21:20:59.87| [by.bsu.up.chat.client.Client] Message from server: first
+2016-05-24 21:21:05.911| [by.bsu.up.chat.client.Client] Message from server: second
+2016-05-24 21:21:34.045| [by.bsu.up.chat.client.Client] Message from server: third
